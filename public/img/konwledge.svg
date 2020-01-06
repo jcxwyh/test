@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 800 400" width="800" height="400">
+    <path d="M5 5L200 5L230 45L795 45L795 395L5 395L5 5ZM5 45L230 45Z" stroke="#87CEFA" stroke-width="1" fill="none"></path>
+    <path d="M7 25L7 7L25 7" stroke="#6ffffb" stroke-width="3" fill="none"></path>
+    <path d="M7 375L7 393L25 393" stroke="#6ffffb" stroke-width="3" fill="none"></path>
+    <path d="M775 393L793 393L793 375" stroke="#6ffffb" stroke-width="3" fill="none"></path>
+    <path d="M793 65L793 47L775 47" stroke="#6ffffb" stroke-width="3" fill="none"></path>
+    <path d="M180 7L200 7L211 22" stroke="#6ffffb" stroke-width="3" fill="none"></path>
+
+    <polygon points="220,10  230, 10  248, 34  238, 34"
+             style="fill: #6ffffb; stroke: none;"/>
+    <polygon points="240,10  250, 10  268, 34  258, 34"
+             style="fill: #6ffffb; stroke: none;" fill-opacity="0.55"/>
+    <polygon points="260,10  270, 10  288, 34  278, 34"
+             style="fill: #6ffffb; stroke: none;" fill-opacity="0.25"/>
+    <text x="20" y="32" font-size="20" fill="#6ffffb">知识库</text>
+</svg>

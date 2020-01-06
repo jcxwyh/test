@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/index.css">
+    <link rel="stylesheet" href="public/fontawesome/css/font-awesome.min.css">
+    <script src="public/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="public/js/jquery.carousel.js"></script>
+    <script src="public/echarts/echarts.min.js"></script>
+    <script src="public/echarts/echarts-liquidfill.min.js"></script>
+    <script src="public/js/public.js"></script>
+    <script type="text/javascript" src="public/js/svg-utils.js"></script>
+    <script type="text/javascript" src="public/js/power.js"></script>
+    <script>
+        //页面初始化
+        $(function () {
+            var width = window.screen.width;
+            if (width > 1920) {
+                $.getScript("public/js/publicParameter4K.js", function () {
+                    console.info('4k');
+                });
+            } else {
+                $.getScript("public/js/publicParameter2K.js", function () {
+                    console.info('2k');
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript" src="public/js/index.js"></script>
+</head>
+<body style="visibility: hidden;">
+<div class="col-100 height8">
+    <img style="width:100%" src="public/img/head.png">
+</div>
+<section >
+    <!--<div class="col-100 height3">&nbsp;</div>-->
+    <div class="col-100 height92  f-left">
+        <div class="col-2 height92 f-left">&nbsp;</div>
+        <div class="col-29 height92 f-left">
+            <div class="col-100 height92">
+                <div class="col-100 height46">
+                    <div class="column-header height4">
+                        <div class="column-header-title col-30 f-left">
+                            <a>稽核执行</a>
+                            <div class="span col-22 height4"></div>
+                        </div>
+                        <div class="col-1 height4 f-left">&nbsp;</div>
+                    </div>
+                    <div class="col-100 height1 f-left">&nbsp;</div>
+                    <div class="column-content height5 col-100">
+                        <div class="col-48 f-left height5" style="border: 1px solid #6ffffb;border-radius: 10px">
+                            <div class="center-middle">稽核需求接收数：<span class="text-show-style1" style="display: inline">451</span>
+                            </div>
+                        </div>
+                        <div class="col-2 height5 f-left">&nbsp;</div>
+                        <div class="col-48 f-left height5" style="border: 1px solid #6ffffb;border-radius: 10px">
+                            <div class="center-middle">稽核点试运行数量：<span class="text-show-style1" style="display: inline">255</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-content height36 col-38 f-left">
+                        <div class="col-100 f-left height18" id="auditMode"></div>
+                        <div class="col-100 f-left height18" id="businessFlow"></div>
+                    </div>
+                    <div class="column-content height36 col-62 f-left" id="transferChart1">
+                        <div class="col-100 f-left height16">
+                            <div class="col-50 f-left height16" id="dispatchMethod"></div>
+                            <div class="col-50 f-left height16" id="dispatchType"></div>
+                        </div>
+                        <div class="col-100 f-left height20">
+                            <div class="tabs">
+                                <div class="tab-title height5">
+                                    <a class="item1 item-cur">省公司</a>
+                                    <a class="item2">分公司</a>
+                                </div>
+                            </div>
+                            <div id="receiverType" class="col-100  height16">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-100 height46">
+                    <div class="column-header height4">
+                        <div class="column-header-title col-30 f-left"><a id="andGatheringName7">稽核效率</a>
+                            <div class="span col-22 height4"></div>
+                        </div>
+                        <div class="col-1 height4 f-left">&nbsp;</div>
+                    </div>
+                    <!--<div class="col-100 height1 f-left">&nbsp;</div>-->
+                    <div class="column-content height24" id="transferChart7">
+                        <div class="col-30 f-left height5"
+                             style="border: 2px solid #6ffffb;border-radius: 20px 0 0 20px;box-shadow: 3px 3px 5px rgba(82,218,255,0.3);">
+                            <div class="center-middle">工单在途：
+                                <span style="font-size: 1.2vw;color: #6ffffb">14</span>
+                                笔
+                            </div>
+                        </div>
+                        <div class="col-3 height5 f-left">&nbsp;</div>
+                        <div class="col-30 f-left height5"
+                             style="border: 2px solid #6ffffb;border-radius:4px;box-shadow: 3px 3px 5px rgba(82,218,255,0.3);">
+                            <div class="center-middle">工单归档：
+                                <span style="font-size: 1.2vw;color: #6ffffb">45</span>
+                                笔
+                            </div>
+                        </div>
+                        <div class="col-3 height5 f-left">&nbsp;</div>
+                        <div class="col-30 f-left height5"
+                             style="border: 2px solid #6ffffb;border-radius: 0 20px 20px 0;box-shadow: 3px 3px 5px rgba(82,218,255,0.3);">
+                            <div class="center-middle">工单响应：
+                                <span style="font-size: 1.2vw;color: #6ffffb">47</span>
+                                笔
+                            </div>
+                        </div>
+                       <!-- <div class="col-100 height1 f-left">&nbsp;</div>-->
+                        <div class="col-100 f-left height17" style="color: white" id="ticketStatus">
+
+                        </div>
+                    </div>
+                    <div class="column-content height18">
+                       <!-- <div class="col-100 height1 f-left">&nbsp;</div>-->
+                        <div class="col-47 f-left height4"
+                             style="border: 2px solid #6ffffb;border-radius: 20px 0 0 20px;box-shadow: 0px 3px 5px rgba(82,218,255,0.3);border-right: none">
+                            <div class="col-48 f-left height4">
+                                <div class="center-middle">
+                                    一次复核通过量
+                                </div>
+                            </div>
+                            <div class="col-4 f-left height4">&nbsp;</div>
+                            <div class=" col-48 f-left">
+                                <div class="col-100 f-left height2 ">
+                                    <div class="center-middle" style="font-size: 0.4vw">月累计 474</div>
+                                </div>
+                                <div class="col-100 f-left height2 ">
+                                    <div class="center-middle" style="font-size: 0.4vw;padding-bottom: 0.8vh">年累计 654
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5 height4 f-left">&nbsp;</div>
+                        <div class="col-47 f-left height4"
+                             style="border: 2px solid #6ffffb;border-radius: 0 20px 20px 0;box-shadow: 3px 3px 5px rgba(82,218,255,0.3);border-left: none">
+                            <div class="col-48 f-left height4">
+                                <div class="center-middle">
+                                    一次复核通过率
+                                </div>
+                            </div>
+                            <div class="col-4 f-left height5">&nbsp;</div>
+                            <div class=" col-48 f-left">
+                                <div class="col-100 f-left height2 ">
+                                    <div class="center-middle" style="font-size: 0.4vw">月累计 88%</div>
+                                </div>
+                               <!-- <div class="col-100 f-left height1">&nbsp;</div>-->
+                                <div class="col-100 f-left height2 ">
+                                    <div class="center-middle" style="font-size: 0.4vw;padding-bottom: 0.8vh">年累计 89%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-100 height1 f-left">&nbsp;</div>
+                        <div class="col-47 f-left height4"
+                             style="border: 2px solid #6ffffb;border-radius: 20px 0 0 20px;box-shadow: 0px 3px 5px rgba(82,218,255,0.3);border-right: none">
+                            <div class="col-48 f-left height4">
+                                <div class="center-middle">
+                                    累计一次复核</br>通过量
+                                </div>
+                            </div>
+                            <div class="col-4 f-left height4">&nbsp;</div>
+                            <div class=" col-48 f-left">
+                                <div class="col-100 f-left height4 ">
+                                    <div class="center-middle" style="font-size: 1.0vw">589</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5 height4 f-left">&nbsp;</div>
+                        <div class="col-47 f-left height4"
+                             style="border: 2px solid #6ffffb;border-radius: 0 20px 20px 0;box-shadow: 3px 3px 5px rgba(82,218,255,0.3);border-left: none">
+                            <div class="col-48 f-left height4">
+                                <div class="center-middle">
+                                    累计一次复核</br>通过率
+                                </div>
+                            </div>
+                            <div class="col-4 f-left height4">&nbsp;</div>
+                            <div class=" col-48 f-left">
+                                <div class="col-100 f-left height4 ">
+                                    <div class="center-middle" style="font-size: 1.0vw">88%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-100 height1 f-left">&nbsp;</div>
+                        <div class="col-47 f-left height4"
+                             style="border: 2px solid #6ffffb;border-radius: 20px 0 0 20px;box-shadow: 0px 3px 5px rgba(82,218,255,0.3);border-right: none">
+                            <div class="col-48 f-left height4">
+                                <div class="center-middle">
+                                    质检工单量
+                                </div>
+                            </div>
+                            <div class="col-4 f-left height4">&nbsp;</div>
+                            <div class=" col-48 f-left">
+                                <div class="col-100 f-left height4 ">
+                                    <div class="center-middle" style="font-size: 1.0vw">354</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5 height4 f-left">&nbsp;</div>
+                        <div class="col-47 f-left height4"
+                             style="border: 2px solid #6ffffb;border-radius: 0 20px 20px 0;box-shadow: 3px 3px 5px rgba(82,218,255,0.3);border-left: none">
+                            <div class="col-48 f-left height4">
+                                <div class="center-middle">
+                                    每工单处理时长
+                                </div>
+                            </div>
+                            <div class="col-4 f-left height4">&nbsp;</div>
+                            <div class=" col-48 f-left">
+                                <div class="col-100 f-left height4 ">
+                                    <div class="center-middle" style="font-size: 1.0vw">120分</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 height92 f-left">&nbsp;</div>
+        <div class="col-36 height92 f-left">
+            <div class="col-100 height58">
+                <div class="column-header height4">
+                    <div class="column-header-title col-30 f-left"><a id="andGatheringName2">稽核能力</a>
+                        <div class="span col-18 height4"></div>
+                    </div>
+                </div>
+                <div class="col-100 height34" id="audit-power">
+                </div>
+                <div class="col-100 height20 ">
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle">当月增加稽核点</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1" >45<label class="unit-level1">个</label></div>
+                        </div>
+                    </div>
+                    <div class="col-3 height8 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle">当月减少稽核点</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1" style="font-size: 1vw">14<label class="unit-level1">个</label></div>
+                        </div>
+                    </div>
+                    <div class="col-3 height8 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle ">当月优化稽核点</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1">15<label class="unit-level1">个</label></div>
+                        </div>
+                    </div>
+                    <div class="col-3 height8 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle">重点业务稽核<br>覆盖率</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1" >88<label class="unit-level1">%</label></div>
+                        </div>
+                    </div>
+                    <div class="col-100 height4 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left " id="coverCount"></div>
+                    <div class="col-3 height8 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle">政企业务稽核<br>覆盖率</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1" >71<label class="unit-level1">%</label></div>
+                        </div>
+                    </div>
+                    <div class="col-3 height8 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle">实物稽核覆盖种类</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1" >41<label class="unit-level1">种</label></div>
+                        </div>
+                    </div>
+                    <div class="col-3 height8 f-left">&nbsp;</div>
+                    <div class="col-22 height8 f-left audit-point">
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle">异动监控指标</div>
+                        </div>
+                        <div class="height4 f-left col-100">
+                            <div class="center-middle text-show-style1" >17<label class="unit-level1">个</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-100 height34">
+                <div class="column-header height4">
+                    <div class="column-header-title col-30 f-left"><a id="andGatheringName8">稽核效益</a>
+                        <div class="span col-18 height4"></div>
+                    </div>
+                    <div class="col-1 height4 f-left">&nbsp;</div>
+                </div>
+                <div class="column-content height30" id="transferChart8">
+                    <div class=" height10">
+                        <div class="col-25 height10 f-left">
+                            <div class="show-style1 v-split-line-right">
+                                <label class="text-show-style1">14.52<span class="unit-level1">万元</span></label>
+                                <label class="text-label-style1">挽回损失金额</label>
+                            </div>
+                        </div>
+                        <div class="col-25 height10 f-left">
+                            <div class="show-style1 v-split-line-right">
+                                <label class="text-show-style1">4.52<span class="unit-level1">万元</span></label>
+                                <label class="text-label-style1">纠正错误金额</label>
+                            </div>
+                        </div>
+                        <div class="col-25 height10 f-left">
+                            <div class="show-style1 v-split-line-right">
+                                <label class="text-show-style1">1.82<span class="unit-level1">万元</span></label>
+                                <label class="text-label-style1">扣罚金额</label>
+                            </div>
+                        </div>
+                        <div class="col-25 height10 f-left">
+                            <div class="col-100 height5 f-left">
+                                <div class="show-style2">
+                                    <label class="text-show-style2">12<span class="unit-level2"></span></label>
+                                    <label class="text-label-style2">渠道关停数</label>
+                                </div>
+                            </div>
+                            <div class="col-100 height5 f-left">
+                                <div class="show-style2">
+                                    <label class="text-show-style2">112<span class="unit-level2"></span></label>
+                                    <label class="text-label-style2">案例沉淀数</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" height20">
+                        <div class="col-100 height2"></div>
+                        <div class="col-25 height18 f-left">
+                            <div class="col-100 height18" id="rationalize-adoption-all" style="display: inline-block"></div>
+                        </div>
+                        <div class="col-75 height1 f-left">&nbsp;</div>
+                        <div class="col-75 height17 f-left" id="rationalize-adoption-pies" style="overflow-x: hidden;overflow-y: hidden;white-space:nowrap;position:relative;">
+                            <ul class="col-100 height17">
+                                <li class="col-33 height17 scroll-item" id="rationalize-adoption-funds" style="display: list-item"></li>
+                                <li class="col-33 height17 scroll-item" id="rationalize-adoption-goods" style="display: list-item"></li>
+                                <li class="col-33 height17 scroll-item" id="rationalize-adoption-cash" style="display: list-item"></li>
+                                <li class="col-33 height17 scroll-item" id="rationalize-adoption-change" style="display: list-item"></li>
+                                <li class="col-33 height17 scroll-item" id="rationalize-adoption-bus" style="display: list-item"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 height92 f-left">&nbsp;</div>
+        <div class="col-29 height92 f-left">
+            <div class="col-100 height18">
+                <div class="column-header height4">
+                    <div class="column-header-title col-30 f-left"><a id="andGatheringName3">重点指标</a>
+                        <div class="span col-22 height4"></div>
+                    </div>
+                    <div class="col-1 height4 f-left">&nbsp;</div>
+                </div>
+                <div class="col-100 height1 f-left">&nbsp;</div>
+                <div class="column-content height13" id="transferChart3">
+                    <div class="col-48 height6 f-left" style="box-shadow: 6px 6px 5px rgba(82,218,255,0.3);border-radius: 20px">
+                        <div class="show-style1" style="transform: translateY(-50%);">
+                            <label class="text-label-style1" style="display: inline">集团通报养卡套利率:</label>
+                            <span class="text-show-style1" style="display: inline">11.34<label class="unit-level1">%</label></span>
+                        </div>
+                    </div>
+                    <div class="col-3 height6 f-left">&nbsp;</div>
+                    <div class="col-48 height6 f-left" style="box-shadow: 6px 6px 5px rgba(82,218,255,0.3);border-radius: 20px">
+                        <div class="show-style1" style="transform: translateY(-50%);">
+                            <label class="text-label-style1" style="display: inline">养卡套利用户数:</label>
+                            <span class="text-show-style1" style="display: inline">1.4<label class="unit-level1">万</label></span>
+                        </div>
+                    </div>
+                    <div class="col-100 height2 f-left">&nbsp;</div>
+                    <div class="col-48 height6 f-left" style="box-shadow: 6px 6px 5px rgba(82,218,255,0.3);border-radius: 20px">
+                        <div class="show-style1" style="transform: translateY(-50%);">
+                            <label class="text-label-style1" style="display: inline">养卡套利数:</label>
+                            <span class="text-show-style1" style="display: inline">11.34<label class="unit-level1">万</label></span>
+                        </div>
+                    </div>
+                    <div class="col-3 height6 f-left">&nbsp;</div>
+                    <div class="col-48 height6 f-left" style="box-shadow: 6px 6px 5px rgba(82,218,255,0.3);border-radius: 20px">
+                        <div class="show-style1" style="transform: translateY(-50%);">
+                            <label class="text-label-style1" style="display: inline">终端套利数:</label>
+                            <span class="text-show-style1" style="display: inline">9.31<label class="unit-level1">万</label></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-100 height1 f-left">&nbsp;</div>
+            <div class="col-100 height40">
+                <div class="column-header height4">
+                    <div class="column-header-title col-30 f-left"><a id="andGatheringName6">渠道风险评估</a>
+                        <div class="span col-22 height4"></div>
+                    </div>
+                    <div class="col-1 height4 f-left">&nbsp;</div>
+                </div>
+                <div class="column-content height36" id="risk-map">
+
+                </div>
+            </div>
+            <div class="col-100 height1 f-left">&nbsp;</div>
+            <div class="col-100 height33">
+                <div class="column-header height4">
+                    <div class="column-header-title col-30 f-left"><a id="andGatheringName9">知识库</a>
+                        <div class="span col-22 height4"></div>
+                    </div>
+                    <div class="col-1 height4 f-left">&nbsp;</div>
+                </div>
+                <div class="column-content height28" id="transferChart9">
+                    <div class="col-100 height1 f-left">&nbsp;</div>
+                    <div class="col-100 height27 f-left knowledge-bg">
+
+                        <table width="100%" class="knowledge-table" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td  width="50%">
+                                    <label class="knowledge-title"><i class="fa fa-tasks"></i>&nbsp;案例学习:</label><span
+                                        class="knowledge-number" style="display: inline;">1.4<label class="unit-level1">万例</label></span>
+                                </td>
+                                <td >
+                                    <label class="knowledge-title"><i class="fa fa-book"></i>&nbsp;操作手册:</label><span
+                                        class="knowledge-number" style="display: inline;">1.4<label class="unit-level1">万册</label></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td width="50%">
+                                    <label class="knowledge-title"><i
+                                            class="fa fa-sort-amount-asc"></i>&nbsp;稽核流程:</label><span
+                                        class="knowledge-number" style="display: inline;">764<label
+                                        class="unit-level1"></label></span>
+                                </td>
+                                <td >
+                                    <label class="knowledge-title"><i class="fa fa-star"></i>&nbsp;稽核点:</label><span
+                                        class="knowledge-number" style="display: inline;">1.4<label class="unit-level1">万个</label></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td  width="50%">
+                                    <label class="knowledge-title"><i class="fa fa-reorder"></i>&nbsp;制度规范:</label><span
+                                        class="knowledge-number" style="display: inline;">114<label
+                                        class="unit-level1"></label></span>
+                                </td>
+                                <td >
+                                    <label class="knowledge-title"><i
+                                            class="fa fa-calendar"></i>&nbsp;稽核月报:</label><span class="knowledge-number"
+                                                                                                style="display: inline;">1511<label
+                                        class="unit-level1"></label></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

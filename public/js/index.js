@@ -86,7 +86,7 @@ function dispatchMethod() {
                     color: "white"
                 },
                 subtextStyle: {
-                    fontSize:  publicTextSize.oneTitle,
+                    fontSize:  publicTextSize.twoTitle,
                     color: 'white'
                 },
                 top: '43%',
@@ -2008,6 +2008,8 @@ function scrollRationalizeAdoption(){
         noLastAnimation: true
     });
 }
+
+//稽核总量
 function auditMode() {
     var mychart = getCharts("auditMode");
     var option = {
@@ -2024,10 +2026,10 @@ function auditMode() {
                     color: "white"
                 },
                 subtextStyle: {
-                    fontSize: publicTextSize.oneTitle,
+                    fontSize: publicTextSize.oneTitle*0.9,
                     color: 'white'
                 },
-                top: '43%',
+                top: '38%',
                 left: 'center'
             }],
         color: ['#00FFFF','#00bfff',],

@@ -103,6 +103,9 @@
                     reset = carousel.mediant - offsetIndexAbs;
                 //设置动态样式
                 carousel.dynamicStyle(offsetIndex, offsetIndexAbs, reset);
+                if(carousel.cardsNum % 2 === 0){
+                    offsetIndex++
+                }
                 if(offsetIndex === carousel.mediant && carousel.noLastAnimation){
                     var cssObj = $.extend({},carousel.cssObj,{"transition": "none"});
                     $(e).css(cssObj);

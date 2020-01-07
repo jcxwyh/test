@@ -34,19 +34,25 @@
 }
 
 .text-show-style1{
-    font-size: 1.2vw;
+    font-size: 0.9vw;
     color: #6ffffb;
     display: block;
     font-weight: bold;
     /*text-shadow: 0 0 1px #6ffffb;*/
+
+    display: inline-block;
+    text-align: left;
 }
 
 .text-label-style1{
     color: #6ffffb;
-    font-size: 0.8vw;
+    font-size: 0.7vw;
     margin-top: -0.2em;
     display: block;
     font-weight: bolder;
+    display: inline-block;
+    width:50%;
+    text-align: right;
 }
 
 .show-style2{
@@ -60,7 +66,7 @@
 }
 
 .text-show-style2{
-    font-size: 1.2vw;
+    font-size: 1vw;
     color: #6ffffb;
     display: block;
     font-weight: bold;
@@ -75,6 +81,28 @@
     font-weight: bolder;
 }
 
+.indicator-item{
+    position: relative;
+    top: 50%;
+    transform: translateY(-25%);
+    color: #6ffffb;
+}
+
+.indicator-item > .indicator-item-title{
+    font-size: 0.7vw;
+    text-align: right;
+}
+
+.indicator-item > div > .indicator-item-number{
+    font-size: 0.9vw;
+    text-align: left;
+    font-weight: bold;
+}
+.indicator-item > div > .indicator-item-unit{
+    font-size: 0.65vw;
+    font-weight: bold;
+}
+
 
 .v-split-line-right{
     border-right: 1px solid #6ffffb;
@@ -83,6 +111,12 @@
 .v-split-line-left{
     border-right: 1px solid #6ffffb;
     /*box-shadow: -10px 0px 15px -5px rgba(0,0,0,0.52);*/
+}
+
+.audit-count-scroll{
+    transform: translateY(-18%) !important;
+    font-size: 1.2vw !important;
+    font-weight: bold;
 }
 
 /*  案例  */
@@ -108,29 +142,65 @@
     text-align: left;
     color:#6ffffb;
     display: inline-block;
-    width: 8em;
+    width: 5.5em;
 }
 
 .knowledge-number{
     margin-right: 1vw;
-    font-size: 1.5vw;
+    font-size: 1vw;
     color: #6ffffb;
     text-align: right;
     font-weight: bold;
 }
 
-.column-header-title{
-    background: transparent;
-}
+/*.column-header-title{*/
+/*    background: transparent;*/
+/*}*/
 
 .column-header-title a{
-    background: rgba(62,171,190,0.1);
-    padding-left: 2em;
-    /*margin-left: 0.14em !important;*/
-    padding-top: 0.19em;
-    padding-bottom: 0.22em;
-    padding-right: 10vw;
-    border-top-right-radius: 0.8em;
+    /*background: rgba(62,171,190,0.1);*/
+    /*padding-left: 2em;*/
+    /*!*margin-left: 0.14em !important;*!*/
+    /*padding-top: 0.19em;*/
+    /*padding-bottom: 0.22em;*/
+    /*padding-right: 10vw;*/
+    /*border-top-right-radius: 0.8em;*/
+    font-size: 1vw !important;
+    font-weight: bold;
+}
+
+.label-level1{
+    font-size: 1vw !important;
+    color: #6ffffb;
+}
+
+.audit-input{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #6ffffb;
+    background: transparent;
+    /*border-radius: 0.5em;*/
+    font-size: 0.8vw;
+    text-align: center;
+    color: #6ffffb;
+    border-right: none;
+    cursor: pointer;
+}
+.audit-label > span,
+.audit-label{
+    height: 100%;
+    width: 100%;
+    font-size: 0.82vw;
+    font-weight: bold;
+    padding: 0.2em 0 0 0.5em;
+    color: #6ffffb;
+}
+
+.audit-label{
+    background: rgba(82,218,255,0.2);
+    border-top:1px solid #6ffffb;
+    border-right:1px solid #6ffffb;
+    border-bottom:1px solid #6ffffb;
 }
 
 /*  test.css */
@@ -144,19 +214,19 @@ body {
     overflow: hidden;
 }
 
-.column-header-title .span {
-    /* height:100%;
-     width: 100%;*/
-    display: block;
-    /*  background:#379ee7;*/
-    /* box-shadow:0 0 5px #379ee7;*/
-    background: url("../img/diamond.svg") no-repeat;
-    background-size: 100% 100%;
-    position: absolute;
-    /*left: -4%;*/
-    top: 0;
+/*.column-header-title .span {*/
+/*    !* height:100%;*/
+/*     width: 100%;*!*/
+/*    display: block;*/
+/*    !*  background:#379ee7;*!*/
+/*    !* box-shadow:0 0 5px #379ee7;*!*/
+/*    background: url("../img/diamond.svg") no-repeat;*/
+/*    background-size: 100% 100%;*/
+/*    position: absolute;*/
+/*    !*left: -4%;*!*/
+/*    top: 0;*/
 
-}
+/*}*/
 
 .textClass {
     line-height: 8vh;
@@ -185,7 +255,7 @@ body {
     transform: translateY(-50%);
     text-align: center;
     color: #6ffffb;
-    font-size: 0.8vw;
+    font-size: 0.6vw;
     display: block;
     /* font-weight: bold;*/
 }

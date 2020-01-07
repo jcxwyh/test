@@ -2,39 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>colors</title>
+    <style>
+        .color-container{
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            align-content: flex-start;
+            width: 100%;
+            margin-top: 7.6em;
+        }
+        .color-container > div{
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: auto;
+            width: 20%;
+            margin: 0.5em;
+            height:60px;
+            border-radius: 0.5em;
+            text-align:center;
+            margin: 0.2em;
+            border: 1px solid rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 0.9vw;
+            padding-top: 0.4em;
+        }
+
+        body{
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .color-select-div{
+            position: fixed;
+            width: 100%;
+            top: 0.5em;
+            height: 60px;
+            text-align: center;
+            display: none;
+            border-radius: 0.5em;
+            font-size: 0.85vw;
+            padding-top: 0.42em;
+        }
+
+    </style>
 </head>
 <body>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #6ffffb">#6ffffb</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FFE4C4">#FFE4C4</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FFD700">#FFD700</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #00FA9A">#00FA9A</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #40E0D0">#40E0D0</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #BA55D3">#BA55D3</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FFC0CB">#FFC0CB</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #D87093">#D87093</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FFFFF0">#FFFFF0</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FFFFE0">#FFFFE0</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #7FFFD4">#7FFFD4</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #87CEFA">#87CEFA</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #40E0D0">#40E0D0</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #66ffff">#66ffff</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #33ffff">#33ffff</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #00ffcc">#00ffcc</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #EEEE00">#EEEE00</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FFD700">#FFD700</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #54FF9F">#54FF9F</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #40E0D0">#40E0D0</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #00FFFF">#00FFFF</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #00FA9A">#00FA9A</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #00FF7F">#00FF7F</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #00BFFF">#00BFFF</div>
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background-color: #FF8C00">#FF8C00</div>
+    <div class="color-select-div">复制成功</div>
+    <div class="color-container">
+        <div style="background-color: #6ffffb">#6ffffb</div>
+        <div style="background-color: #FFE4C4">#FFE4C4</div>
+        <div style="background-color: #FFD700">#FFD700</div>
+        <div style="background-color: #00FA9A">#00FA9A</div>
+        <div style="background-color: #40E0D0">#40E0D0</div>
+        <div style="background-color: #BA55D3">#BA55D3</div>
+        <div style="background-color: #FFC0CB">#FFC0CB</div>
+        <div style="background-color: #D87093">#D87093</div>
+        <div style="background-color: #FFFFF0">#FFFFF0</div>
+        <div style="background-color: #FFFFE0">#FFFFE0</div>
+        <div style="background-color: #7FFFD4">#7FFFD4</div>
+        <div style="background-color: #87CEFA">#87CEFA</div>
+        <div style="background-color: #40E0D0">#40E0D0</div>
+        <div style="background-color: #66ffff">#66ffff</div>
+        <div style="background-color: #33ffff">#33ffff</div>
+        <div style="background-color: #00ffcc">#00ffcc</div>
+        <div style="background-color: #EEEE00">#EEEE00</div>
+        <div style="background-color: #FFD700">#FFD700</div>
+        <div style="background-color: #54FF9F">#54FF9F</div>
+        <div style="background-color: #40E0D0">#40E0D0</div>
+        <div style="background-color: #00FFFF">#00FFFF</div>
+        <div style="background-color: #00FA9A">#00FA9A</div>
+        <div style="background-color: #00FF7F">#00FF7F</div>
+        <div style="background-color: #00BFFF">#00BFFF</div>
+        <div style="background-color: #FF8C00">#FF8C00</div>
+    </div>
+
+    <input id="color-select" type="hidden"/>
 
 
-    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background: linear-gradient(to right,#7FFFD4,#00FA9A,#FFD700,#00BFFF);">#FF8C00</div>
+
+<!--    <div style="height:60px;border-radius: 0.5em;text-align:center;margin: 0.2em 0;background: linear-gradient(to right,#7FFFD4,#00FA9A,#FFD700,#00BFFF);">#7FFFD4 -> #00FA9A -> #FFD700 -> #00BFFF</div>-->
+
 </body>
-<scritp>
+<script>
+    // 绑定复制功能
+    function copyText() {
 
-</scritp>
+        alert("复制成功");
+    }
+
+    var input = document.getElementById("color-select");
+    var nodes = document.querySelectorAll('.color-container > div')
+    for(var i = 0; i<nodes.length ; i++){
+        var temp = nodes[i]
+
+        console.log(temp)
+        console.log(typeof temp)
+        temp.addEventListener('click', function(ev){
+            var colorText = ev.target.innerText;
+            input.value = colorText; // 修改文本框的内容
+            input.select(); // 选中文本
+            document.execCommand("copy"); // 执行浏览器复制命令
+
+            var csd = document.querySelector('.color-select-div');
+            csd.style.cssText = "display:block;background-color:" + colorText;
+        })
+    }
+</script>
 </html>

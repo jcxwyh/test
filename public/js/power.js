@@ -22,24 +22,24 @@ var auditPowerStyle = {
     pd1Style: {
         text1: {
             "x": "120",
-                "y": "110",
-                "fill": "#3EABBE",
-                "font-size": "45",
-                "font-weight": "bold"
+            "y": "110",
+            "fill": "#3EABBE",
+            "font-size": "40",
+            "font-weight": "bold"
         },
         text2: {
-            "x": "220",
-            "y": "107",
+            "x": "215",
+            "y": "110",
             "fill": "#3EABBE",
-            "font-size": "25",
+            "font-size": "22",
             "font-weight": "bold"
         },
         value: {
             "x": "80",
-                "y": "210",
-                "fill": "#fff",
-                "font-size": "50",
-                "font-weight": "bold"
+            "y": "210",
+            "fill": "#fff",
+            "font-size": "45",
+            "font-weight": "bold"
         },
         unit: {
 
@@ -50,21 +50,21 @@ var auditPowerStyle = {
             "x": "580",
             "y": "110",
             "fill": "#3EABBE",
-            "font-size": "45",
+            "font-size": "40",
             "font-weight": "bold"
         },
         text2: {
-            "x": "680",
-            "y": "107",
+            "x": "675",
+            "y": "110",
             "fill": "#3EABBE",
-            "font-size": "25",
+            "font-size": "22",
             "font-weight": "bold"
         },
         value: {
             "x": "550",
             "y": "210",
             "fill": "#fff",
-            "font-size": "50",
+            "font-size": "45",
             "font-weight": "bold"
         },
         unit: {
@@ -73,29 +73,29 @@ var auditPowerStyle = {
     },
     pd3Style: {
         text1: {
-            "x": "120",
-            "y": "330",
+            "x": "115",
+            "y": "325",
             "fill": "#3EABBE",
-            "font-size": "45",
+            "font-size": "40",
             "font-weight": "bold"
         },
         text2: {
-            "x": "120",
-            "y": "380",
+            "x": "115",
+            "y": "360",
             "fill": "#3EABBE",
-            "font-size": "20",
+            "font-size": "22",
             "font-weight": "bold"
         },
         value: {
-            "x": "120",
-            "y": "460",
+            "x": "115",
+            "y": "425",
             "fill": "#fff",
-            "font-size": "50",
+            "font-size": "45",
             "font-weight": "bold"
         },
         unit: {
-            "x": "230",
-            "y": "460",
+            "x": "205",
+            "y": "425",
             "fill": "#fff",
             "font-size": "25",
             "font-weight": "bold"
@@ -104,28 +104,28 @@ var auditPowerStyle = {
     pd4Style: {
         text1: {
             "x": "420",
-            "y": "330",
+            "y": "325",
             "fill": "#3EABBE",
-            "font-size": "45",
+            "font-size": "40",
             "font-weight": "bold"
         },
         text2: {
             "x": "420",
-            "y": "380",
+            "y": "360",
             "fill": "#3EABBE",
-            "font-size": "20",
+            "font-size": "22",
             "font-weight": "bold"
         },
         value: {
             "x": "420",
-            "y": "460",
+            "y": "425",
             "fill": "#fff",
-            "font-size": "50",
+            "font-size": "45",
             "font-weight": "bold"
         },
         unit: {
-            "x": "490",
-            "y": "460",
+            "x": "485",
+            "y": "425",
             "fill": "#fff",
             "font-size": "25",
             "font-weight": "bold"
@@ -133,29 +133,29 @@ var auditPowerStyle = {
     },
     pd5Style: {
         text1: {
-            "x": "690",
-            "y": "330",
+            "x": "675",
+            "y": "325",
             "fill": "#3EABBE",
-            "font-size": "45",
+            "font-size": "40",
             "font-weight": "bold"
         },
         text2: {
-            "x": "690",
-            "y": "380",
+            "x": "675",
+            "y": "360",
             "fill": "#3EABBE",
-            "font-size": "20",
+            "font-size": "22",
             "font-weight": "bold"
         },
         value: {
-            "x": "690",
-            "y": "460",
+            "x": "675",
+            "y": "425",
             "fill": "#fff",
-            "font-size": "50",
+            "font-size": "45",
             "font-weight": "bold"
         },
         unit: {
-            "x": "790",
-            "y": "460",
+            "x": "760",
+            "y": "425",
             "fill": "#fff",
             "font-size": "25",
             "font-weight": "bold"
@@ -181,14 +181,27 @@ var frameShadow = svgUtils.createFrameShadow({
 function initAuditPowerPolygon(parentEle, data){
     var svg = svgUtils.createSvgTag('svg', {
         "xmlns": svgNamespace,
+        "xmlns:xlink": "http://www.w3.org/1999/xlink",
         "width": "100%",
         "height": "100%",
-        "viewBox": "0 0 920 520"
+        "viewBox": "0 0 920 480"
     });
     svg.appendChild(frameShadow);
     insertFrame(svg);
+    insertImgFrame(svg);
     insertDataFrame(svg,data);
     parentEle.appendChild(svg);
+}
+
+function insertImgFrame(svg){
+    var busImg = svgUtils.createSvgTag('image', {
+        "width":"50",
+        "height":"50",
+        "x": "80",
+        "y": "210",
+        "xlink:href": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1002090122,3609295104&fm=26&gp=0.jpg"
+    });
+    svg.appendChild(busImg)
 }
 
 /**
@@ -248,41 +261,41 @@ function insertFrame(svg){
         "fill": "none"
     });
     var shadowPath = svgUtils.createSvgTag('path', {
-        "d": "M10 260L10 240L90 35L110 20L350 20L370 40L550 40L570 20L810 20L830 35L910 240L910 280L830 485L810 500L570 500L550 480L370 480L350 500L110 500L90 485L10 280Z",
+        "d": "M10 240L10 220L90 35L110 20L350 20L370 40L550 40L570 20L810 20L830 35L910 220L910 260L830 445L810 460L570 460L550 440L370 440L350 460L110 460L90 445L10 260Z",
         "stroke": "#3EABBE",
         "stroke-width": "3",
         "fill": "none",
         "filter": "url(#shadow1)"
     });
     var path1 = svgUtils.createSvgTag('path', {
-       "d": "M10 260L10 240L90 35L110 20L350 20L370 40L550 40L570 20L810 20L830 35L910 240L910 280L830 485L810 500L570 500L550 480L370 480L350 500L110 500L90 485L10 280Z",
+       "d": "M10 240L10 220L90 35L110 20L350 20L370 40L550 40L570 20L810 20L830 35L910 220L910 260L830 445L810 460L570 460L550 440L370 440L350 460L110 460L90 445L10 260Z",
         "stroke": "#3EABBE",
         "stroke-width": "2",
         "fill": "none"
     });
     var path2 = svgUtils.createSvgTag('path', {
-        "d": "M20 260L900 260",
+        "d": "M20 240L900 240",
         "stroke": "#3EABBE",
         "stroke-width": "2",
         "fill": "none",
         "stroke-opacity":"0.75"
     });
     var path3 = svgUtils.createSvgTag('path', {
-        "d": "M375 45L545 45L460 260L375 45Z",
+        "d": "M375 45L545 45L460 240L375 45",
         "stroke": "#3EABBE",
         "stroke-width": "1",
         "fill": "none",
         "stroke-opacity":"0.75"
     });
     var path4 = svgUtils.createSvgTag('path', {
-        "d": "M265 260L350 500Z",
+        "d": "M265 240L350 460Z",
         "stroke": "#3EABBE",
         "stroke-width": "1",
         "fill": "none",
         "stroke-opacity":"0.75"
     });
     var path5 = svgUtils.createSvgTag('path', {
-        "d": "M655 260L570 500Z",
+        "d": "M655 240L570 460Z",
         "stroke": "#3EABBE",
         "stroke-width": "1",
         "fill": "none",

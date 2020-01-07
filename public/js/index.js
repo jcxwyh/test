@@ -4,6 +4,28 @@
 var macaronColor = ['#00FFFF','#00bfff','#b8cbe3','#5c91ff',
     '#70c0ff','#FFFFF0'];
 
+var warnColor = {
+    red: '#F58080',
+    green: '#47D8BE',
+    yellow: '#F6D06F'
+};
+
+var provinceCompany = [106.807161, 26.857146]
+
+var gzCityMap = {
+    '省公司': [106.807161, 26.857146],
+    '贵阳': [106.713478,26.578343],
+    '安顺': [105.932188,26.245544],
+    '遵义': [106.937265,27.706626],
+    '铜仁': [109.191555,27.718346],
+    '毕节': [105.28501,27.301693],
+    '黔南': [107.517156,26.258219],
+    '六盘水': [104.846743,26.584643],
+    '黔东南': [107.977488,26.583352],
+    '黔西南': [104.897971,25.08812],
+    '贵安': [106.322333,26.411911]
+};
+
 //dom选择器
 function getCharts(id) {
     var myChart = echarts.init(document.getElementById(id));
@@ -15,14 +37,14 @@ function businessFlow() {
     var option = {
         title: [
             {
-                text: '稽核业务类型',
+                text: '稽核量分布情况',
                 textStyle: {
                     fontSize: publicTextSize.fiveTitle,
                     color: "#6ffffb"
                 },
                 textAlign: "center",
-                x:"35%",
-                y:"5%"
+                x: "45%",
+                y: "5%"
             }],
         tooltip: {
             trigger: 'item',
@@ -34,8 +56,8 @@ function businessFlow() {
 
                 name: '业务类型',
                 type: 'pie',
-                radius: '90%',
-                center:['50%', '62%'],
+                radius: '80%',
+                center: ['50%', '50%'],
                 roseType: 'area',
 
                 data: [
@@ -47,17 +69,16 @@ function businessFlow() {
                 ],
                 label: {
                     normal: {
+                        show: true,
                         position: 'inner',
                         textStyle: {
                             fontSize: publicTextSize.sixTitle
-                        }
+                        },
+                        formatter: '{b}: {c}'
                     }
                 },
                 itemStyle: {
                     normal: {
-                        labelLine: {
-                            length: 10
-                        },
                         color: function (params) {
                             return macaronColor[params.dataIndex]
                         }
@@ -75,24 +96,24 @@ function dispatchMethod() {
     var option = {
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+            formatter: "{b}<br/>{c}({d}%)"
         },
         title: [
             {
                 text: '工单派发量',
-                subtext: 11554 ,
+                subtext: 11554,
                 textStyle: {
                     fontSize: publicTextSize.fourTitle,
                     color: "white"
                 },
                 subtextStyle: {
-                    fontSize:  publicTextSize.twoTitle,
+                    fontSize: publicTextSize.twoTitle,
                     color: 'white'
                 },
-                top: '43%',
+                top: '40%',
                 left: 'center'
             }],
-        color: ['#00FFFF','#00bfff',],
+        color: ['#00FFFF', '#00bfff',],
         series: [
             {
                 name: '',
@@ -100,22 +121,23 @@ function dispatchMethod() {
                 selectedMode: 'single',
                 // radius: ['50%', '70%'],
                 radius: ['40%', '50%'],
-                center:["50%","50%"],
+                center: ["50%", "50%"],
                 label: {
                     normal: {
-                        show:true,
+                        show: true,
                         //show: false
                         position: 'outside',
                         textStyle: {
                             fontSize: publicTextSize.sixTitle
-                        }
+                        },
+                        formatter: '{b}\n{d}%'
                     }
                 },
                 labelLine: {
                     normal: {
                         show: true,
-                        length:5,
-                        length2:5
+                        length: 5,
+                        length2: 5
                         //show: false
                     }
                 },
@@ -135,13 +157,13 @@ function dispatchType() {
     var option = {
         title: [
             {
-                text: '工单派发类型',
+                text: '工单分布情况',
                 textStyle: {
                     fontSize: publicTextSize.fiveTitle,
                     color: "#6ffffb"
                 },
-                left: 'center',
-                y:"5%"
+                x: '40%',
+                y: "5%"
             }],
         tooltip: {
             trigger: 'item',
@@ -152,8 +174,8 @@ function dispatchType() {
             {
                 name: '派单类型',
                 type: 'pie',
-                radius: '90%',
-                center: ['50%', '62%'],
+                radius: '80%',
+                center: ['65%', '50%'],
                 roseType: 'area',
 
                 data: [
@@ -165,10 +187,12 @@ function dispatchType() {
                 ],
                 label: {
                     normal: {
+                        show: true,
                         position: 'inner',
                         textStyle: {
                             fontSize: publicTextSize.sixTitle
-                        }
+                        },
+                        formatter: '{b}\n{c}'
                     }
                 },
                 itemStyle: {
@@ -188,34 +212,35 @@ function dispatchType() {
 }
 
 var count = 0;
+
 //接收人类型
 function receiverType() {
     var xData = [];
     var yData = [];
-    var bottom = 65;
+    var bottom = 40;
     if (count == 0) {
         xData = ['市场部', '信息技术部', '财务部', '大数据中心', '政企分公司'];
         yData = [120, 200, 150, 80, 70]
     } else {
         xData = ['贵阳', '遵义', '安顺', '黔南', '黔东南', '毕节', '铜仁', '六盘水', '黔西南', '贵安'];
         yData = [120, 200, 150, 80, 70, 142, 201, 59, 88, 96];
-        bottom = 48;
+        bottom = 40;
     }
     var mychart = getCharts("receiverType");
     var option = {
-        legend: {
-            show: true,
-            x: 'right',
-            y: '0',
-            icon: 'stack',
-            itemWidth: 10,
-            itemHeight: 10,
-            textStyle: {
-                color: '#1bb4f6',
-                fontSize: publicTextSize.sevenTitle
-            },
-            data: ['工单接收人类型']
-        },
+        /* legend: {
+             show: true,
+             x: 'right',
+             y: '0',
+             icon: 'stack',
+             itemWidth: 10,
+             itemHeight: 10,
+             textStyle: {
+                 color: '#1bb4f6',
+                 fontSize: publicTextSize.sixTitle
+             },
+             data: ['工单接收情况']
+         },*/
         tooltip: {
             trigger: 'axis',
             axisPointer: {       // 坐标轴指示器，坐标轴触发有效
@@ -235,12 +260,12 @@ function receiverType() {
             type: 'category',
             data: xData,
             axisLabel: {
-                rotate:45,
+                rotate: 45,
                 textStyle: {
                     color: '#fff',
                     fontSize: publicTextSize.sevenTitle
                 },
-                interval:0
+                interval: 0
             },
         },
         yAxis: {
@@ -268,17 +293,150 @@ function receiverType() {
             bottom: bottom
         },
         series: [{
-            name:"工单接收人类型",
+            name: "业务",
             data: yData,
             type: 'bar',
-            label: {
+            stack: "工单",
+            /* label: {
+                 position: 'top',
+                 color: '#fff',
+                 show: true,
+                 textStyle: {
+                     fontSize: publicTextSize.sixTitle
+                 }
+             },*/
+            itemStyle: {
+                normal: {
+                    show: true,
+                    //barBorderRadius: [15, 15, 0, 0],
+                    //color: "#6decf6"
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: '#3987e4' // 0% 处的颜色
+                        }, {
+                            offset: 1, color: '#91a1d4' // 100% 处的颜色
+                        }],
+                        globalCoord: false // 缺省为 false
+                    },
+                }
+            }
+        }, {
+            name: "资金",
+            data: yData,
+            type: 'bar',
+            stack: "工单",
+            /*label: {
                 position: 'top',
                 color: '#fff',
                 show: true,
                 textStyle: {
                     fontSize: publicTextSize.sixTitle
                 }
-            },
+            },*/
+            itemStyle: {
+                normal: {
+                    show: true,
+                    //barBorderRadius: [15, 15, 0, 0],
+                    //color: "#6decf6"
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: '#e462b2' // 0% 处的颜色
+                        }, {
+                            offset: 1, color: '#c4acd4' // 100% 处的颜色
+                        }],
+                        globalCoord: false // 缺省为 false
+                    },
+                }
+            }
+        }, {
+            name: "异动",
+            data: yData,
+            type: 'bar',
+            stack: "工单",
+            /* label: {
+                 position: 'top',
+                 color: '#fff',
+                 show: true,
+                 textStyle: {
+                     fontSize: publicTextSize.sixTitle
+                 }
+             },*/
+            itemStyle: {
+                normal: {
+                    show: true,
+                    //barBorderRadius: [15, 15, 0, 0],
+                    //color: "#6decf6"
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: '#e44d40' // 0% 处的颜色
+                        }, {
+                            offset: 1, color: '#d4a5a8' // 100% 处的颜色
+                        }],
+                        globalCoord: false // 缺省为 false
+                    },
+                }
+            }
+        }, {
+            name: "付现",
+            data: yData,
+            type: 'bar',
+            stack: "工单",
+            /* label: {
+                 position: 'top',
+                 color: '#fff',
+                 show: true,
+                 textStyle: {
+                     fontSize: publicTextSize.sixTitle
+                 }
+             },*/
+            itemStyle: {
+                normal: {
+                    show: true,
+                    // barBorderRadius: [15, 15, 0, 0],
+                    //color: "#6decf6"
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: '#8ce42e' // 0% 处的颜色
+                        }, {
+                            offset: 1, color: '#c1d498' // 100% 处的颜色
+                        }],
+                        globalCoord: false // 缺省为 false
+                    },
+                }
+            }
+        }, {
+            name: "实物",
+            data: yData,
+            type: 'bar',
+            stack: "工单",
+            /* label: {
+                 position: 'top',
+                 color: '#fff',
+                 show: true,
+                 textStyle: {
+                     fontSize: publicTextSize.sixTitle
+                 }
+             },*/
             itemStyle: {
                 normal: {
                     show: true,
@@ -291,9 +449,9 @@ function receiverType() {
                         x2: 0,
                         y2: 1,
                         colorStops: [{
-                            offset: 0, color: '#3987e4' // 0% 处的颜色
+                            offset: 0, color: '#4414e4' // 0% 处的颜色
                         }, {
-                            offset: 1, color: '#00d4c7' // 100% 处的颜色
+                            offset: 1, color: '#836dd4' // 100% 处的颜色
                         }],
                         globalCoord: false // 缺省为 false
                     },
@@ -307,11 +465,11 @@ function receiverType() {
 
 function clickTab() {
     $(".tab-title a").click(function () {
-        if ($(this).text() == "省公司"){
+        if ($(this).text() == "省公司") {
             $(".item1").addClass("item-cur");
             $(".item2").removeClass("item-cur");
             count = 0;
-        }else {
+        } else {
             $(".item2").addClass("item-cur");
             $(".item1").removeClass("item-cur");
             count = 1;
@@ -319,185 +477,461 @@ function clickTab() {
         receiverType();
     })
 }
+
+//超时在途量
 function ticketStatus() {
     var mychart = getCharts("ticketStatus");
 
-    var fontColor = '#30eee9';
     var option = {
-
-        grid: {
-            left: '5%',
-            right: '10%',
-            top: '20%',
-            bottom: publicLengDistance.five,
-            containLabel: true
-        },
         tooltip: {
-            show: true,
-            trigger: 'item'
+            formatter: '{a} <br/>{c}'
         },
-        legend: {
-            show: true,
-            x: 'center',
-            y: '5',
-            icon: 'circle',
-            itemWidth: 10,
-            itemHeight: 10,
-            textStyle: {
-                color: '#1bb4f6',
-                fontSize: publicTextSize.sixTitle
-            },
-            data: ['在途', '归档', '响应']
-        },
-        xAxis: [
-            {
-                type: 'category',
-                boundaryGap: false,
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: publicTextSize.sixTitle
-                    }
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisTick: {
-                    show: false,
-                },
-                splitLine: {
-                    show: false,
-                    lineStyle: {
-                        color: '#195384'
-                    }
-                },
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-            }
-        ],
-        yAxis: [
-
-            {
-                type: 'value',
-                name: '',
-                /*min:0,
-                max:1000,*/
-                axisLabel: {
-                    formatter: '{value} ',
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: publicTextSize.sixTitle
-                    }
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisTick: {
-                    show: false,
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        color: '#11366e'
-                    }
-                }
-            }
-        ],
         series: [
             {
-                name: '在途',
-                type: 'line',
-
-                symbol: 'circle',
-                symbolSize: 8,
-                itemStyle: {
-                    normal: {
-                        color: '#0092f6',
-                        lineStyle: {
-                            color: "#0092f6",
-                            width: 1
-                        },
-                        areaStyle: {
-                            //color: '#94C9EC'
-                            color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-                                offset: 0,
-                                color: 'rgba(7,44,90,0.3)'
-                            }, {
-                                offset: 1,
-                                color: 'rgba(0,146,246,0.9)'
-                            }]),
-                        }
+                name: '超时在途量',
+                type: 'gauge',
+                min: 0,
+                max: 100,
+                splitNumber: 10,
+                radius: '85%',
+                axisLine: {//坐标轴
+                    // show:false,// 是否显示仪表盘轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: [[0.3, 'lime'], [0.6, '#ff4500'], [1, 'red']],
+                        width: 2,
+                        shadowColor: '#fff', //默认透明
+                        shadowBlur: 2
                     }
                 },
-                markPoint: {
-                    itemStyle: {
-                        normal: {
-                            color: 'red'
-                        }
+                axisLabel: {            // 刻度字体
+                    // fontWeight: 'bolder',
+                    color: '#fff',
+                    fontSize: 8
+                    //shadowColor: '#fff', //默认透明
+                    //shadowBlur: 5
+                },
+                axisTick: {            // 刻度样式
+                    length: 5,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto',
+                        //shadowColor: '#fff', //默认透明
+                        //shadowBlur: 5
                     }
                 },
-                data: [120, 132, 101, 134, 90, 230, 210, 182, 191, 234, 290, 330]
-            },
-            {
-                name: '归档',
-                type: 'line',
-
-                symbol: 'circle',
-                symbolSize: 8,
-
-                itemStyle: {
-                    normal: {
-                        color: '#00d4c7',
-                        lineStyle: {
-                            color: "#00d4c7",
-                            width: 1
-                        },
-                        areaStyle: {
-                            //color: '#94C9EC'
-                            color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-                                offset: 0,
-                                color: 'rgba(7,44,90,0.3)'
-                            }, {
-                                offset: 1,
-                                color: 'rgba(0,212,199,0.9)'
-                            }]),
-                        }
+                splitLine: {           // 分隔线
+                    length: 6,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        width: 1,
+                        color: '#fff',
+                        //shadowColor: '#fff', //默认透明
+                        //shadowBlur: 5
                     }
                 },
-                data: [220, 182, 191, 234, 290, 330, 310, 201, 154, 190, 330, 410]
-            },
-            {
-                name: '响应',
-                type: 'line',
+                pointer: {// 指针
+                    length: "75%",
+                    shadowColor: '#fff', //默认透明
+                    //shadowBlur: 2
+                    width: 6
+                },
+                title: {
+                    offsetCenter: [0, "-15%"],
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        fontSize: 8,
+                        fontStyle: 'italic',
+                        color: '#fff',
 
-                symbol: 'circle',
-                symbolSize: 8,
-                itemStyle: {
-                    normal: {
-                        color: '#aecb56',
-                        lineStyle: {
-                            color: "#aecb56",
-                            width: 1
-                        },
-                        areaStyle: {
-                            //color: '#94C9EC'
-                            color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-                                offset: 0,
-                                color: 'rgba(7,44,90,0.3)'
-                            }, {
-                                offset: 1,
-                                color: 'rgba(114,144,89,0.9)'
-                            }]),
-                        }
+                        //shadowColor: '#fff', //默认透明
+                        //shadowBlur: 5
                     }
                 },
-                data: [150, 232, 201, 154, 190, 330, 410, 150, 232, 201, 154, 190]
+                detail: {
+                    backgroundColor: '#4a99ff',
+                    borderRadius: 10,
+                    width: 4,
+                    height: 4,
+                    // borderWidth: 1,
+                    borderColor: '#fff',
+                    //shadowColor: '#fff', //默认透明
+                    //shadowBlur: 2,
+                    offsetCenter: [0, '60%'],       // x, y，单位px
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        color: '#fff',
+                        fontSize: 10
+                    }
+                },
+                data: [{value: 10, name: '超时在途量/笔'}]
             }
         ]
+    };
+    mychart.setOption(option)
+}
+
+//超时在途量雷达
+function overtimeWorkOrderRadar() {
+    var mychart = getCharts("overtimeWorkOrderRadar");
+    var indicator = [{
+        text: '贵阳',
+        max: 6000,
+    },
+        {
+            text: '贵安',
+            max: 5000
+        },
+        {
+            text: '遵义',
+            max: 5000
+        },
+        {
+            text: '黔南',
+            max: 5000,
+            //  axisLabel: {show: true, textStyle: {fontSize: 18, color: '#333'}}
+        },
+        {
+            text: '六盘水',
+            max: 5000
+        },
+        {
+            text: '安顺',
+            max: 5000
+        }, {
+            text: '黔东南',
+            max: 5000
+        }, {
+            text: '黔西南',
+            max: 5000
+        }, {
+            text: '毕节',
+            max: 5000
+        }, {
+            text: '铜仁',
+            max: 5000
+        }
+    ];
+    var dataArr = [{
+        value: [4300, 4700, 3600, 3900, 3800, 4200, 3200, 2500, 4500, 4651],
+        name: "超时在途量",
+        itemStyle: {
+            normal: {
+                lineStyle: {
+                    color: '#4A99FF',
+                    // shadowColor: '#4A99FF',
+                    // shadowBlur: 10,
+                    // width:150
+                },
+                shadowColor: '#4A99FF',
+                shadowBlur: 10,
+
+            },
+        },
+        areaStyle: {
+            normal: { // 单项区域填充样式
+                color: {
+                    type: 'linear',
+                    x: 0, //右
+                    y: 0, //下
+                    x2: 1, //左
+                    y2: 1, //上
+                    colorStops: [{
+                        offset: 0,
+                        color: '#4A99FF'
+                    }, {
+                        offset: 0.5,
+                        color: 'rgba(0,0,0,0)'
+                    }, {
+                        offset: 1,
+                        color: '#4A99FF'
+                    }],
+                    globalCoord: false
+                },
+                opacity: 1 // 区域透明度
+            }
+        }
+    }
+    ];
+    var colorArr = ['#4A99FF', '#4BFFFC']; //颜色
+    option = {
+        tooltip: {},
+        color: colorArr,
+        //radius:"50%",
+        center: ['50%', '50%'],
+        legend: {
+            orient: 'vertical',
+            icon: 'circle', //图例形状
+            data: ["超时在途量"],
+            top: 5,
+            right: 0.5,
+            itemWidth: 8, // 图例标记的图形宽度。[ default: 25 ]
+            itemHeight: 8, // 图例标记的图形高度。[ default: 14 ]
+            // itemGap: 21, // 图例每项之间的间隔。[ default: 10 ]横向布局时为水平间隔，纵向布局时为纵向间隔。
+            textStyle: {
+                fontSize: 10,
+                color: '#00E4FF',
+            },
+        },
+        radar: {
+            shape: 'circle',
+            radius: '62%',
+            //center: ['43%', '60%'],
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 8
+                },
+            },
+            indicator: indicator,
+            splitArea: { // 坐标轴在 grid 区域中的分隔区域，默认不显示。
+                show: true,
+                areaStyle: { // 分隔区域的样式设置。
+                    color: ['rgba(255,255,255,0)', 'rgba(255,255,255,0)'], // 分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
+                }
+            },
+            axisLine: { //指向外圈文本的分隔线样式
+                lineStyle: {
+                    color: '#153269'
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#113865', // 分隔线颜色
+                    width: 1, // 分隔线线宽
+                }
+            },
+        },
+        series: [{
+            type: 'radar',
+            symbolSize: 5,
+            label: {
+                fontSize: 10,
+                show: false
+            },
+            // symbol: 'angle',
+            data: dataArr
+        }]
+    };
+    mychart.setOption(option)
+}
+
+//超时响应量
+function overtimeResponse() {
+    var mychart = getCharts("overtimeResponse");
+
+    var option = {
+        tooltip: {
+            formatter: '{a} <br/>{c}'
+        },
+        series: [
+            {
+                name: '超时在途量',
+                type: 'gauge',
+                min: 0,
+                max: 100,
+                splitNumber: 10,
+                radius: '85%',
+                axisLine: {//坐标轴
+                    // show:false,// 是否显示仪表盘轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: [[0.3, 'lime'], [0.6, '#ff4500'], [1, 'red']],
+                        width: 2,
+                        shadowColor: '#fff', //默认透明
+                        shadowBlur: 2
+                    }
+                },
+                axisLabel: {            // 刻度字体
+                    // fontWeight: 'bolder',
+                    color: '#fff',
+                    fontSize: 8
+                    //shadowColor: '#fff', //默认透明
+                    //shadowBlur: 5
+                },
+                axisTick: {            // 刻度样式
+                    length: 5,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto',
+                        //shadowColor: '#fff', //默认透明
+                        //shadowBlur: 5
+                    }
+                },
+                splitLine: {           // 分隔线
+                    length: 6,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        width: 1,
+                        color: '#fff',
+                        //shadowColor: '#fff', //默认透明
+                        //shadowBlur: 5
+                    }
+                },
+                pointer: {// 指针
+                    length: "75%",
+                    shadowColor: '#fff', //默认透明
+                    //shadowBlur: 2
+                    width: 6
+                },
+                title: {
+                    offsetCenter: [0, "-15%"],
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        fontSize: 8,
+                        fontStyle: 'italic',
+                        color: '#fff',
+
+                        //shadowColor: '#fff', //默认透明
+                        //shadowBlur: 5
+                    }
+                },
+                detail: {
+                    backgroundColor: '#4a99ff',
+                    borderRadius: 10,
+                    width: 4,
+                    height: 4,
+                    // borderWidth: 1,
+                    borderColor: '#fff',
+                    //shadowColor: '#fff', //默认透明
+                    //shadowBlur: 2,
+                    offsetCenter: [0, '60%'],       // x, y，单位px
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        color: '#fff',
+                        fontSize: 10
+                    }
+                },
+                data: [{value: 50, name: '超时响应量/笔'}]
+            }
+        ]
+    };
+    mychart.setOption(option)
+}
+
+//超时响应量雷达
+function overtimeResponseRadar() {
+    var mychart = getCharts("overtimeResponseRadar");
+    var indicator = [{
+        text: '贵阳',
+        max: 6000,
+    },
+        {
+            text: '贵安',
+            max: 5000
+        },
+        {
+            text: '遵义',
+            max: 5000
+        },
+        {
+            text: '黔南',
+            max: 5000,
+            //  axisLabel: {show: true, textStyle: {fontSize: 18, color: '#333'}}
+        },
+        {
+            text: '六盘水',
+            max: 5000
+        },
+        {
+            text: '安顺',
+            max: 5000
+        }
+    ];
+    var dataArr = [{
+        value: [4300, 4700, 3600, 3900, 3800, 4200],
+        name: "超时响应量",
+        itemStyle: {
+            normal: {
+                lineStyle: {
+                    color: '#4A99FF',
+                    // shadowColor: '#4A99FF',
+                    // shadowBlur: 10,
+                    // width:150
+                },
+                shadowColor: '#4A99FF',
+                shadowBlur: 10,
+
+            },
+        },
+        areaStyle: {
+            normal: { // 单项区域填充样式
+                color: {
+                    type: 'linear',
+                    x: 0, //右
+                    y: 0, //下
+                    x2: 1, //左
+                    y2: 1, //上
+                    colorStops: [{
+                        offset: 0,
+                        color: '#4A99FF'
+                    }, {
+                        offset: 0.5,
+                        color: 'rgba(0,0,0,0)'
+                    }, {
+                        offset: 1,
+                        color: '#4A99FF'
+                    }],
+                    globalCoord: false
+                },
+                opacity: 1 // 区域透明度
+            }
+        }
+    }
+    ];
+    var colorArr = ['#4A99FF', '#4BFFFC']; //颜色
+    option = {
+        tooltip: {},
+        color: colorArr,
+        //radius:"50%",
+        center: ['50%', '50%'],
+        legend: {
+            orient: 'vertical',
+            icon: 'circle', //图例形状
+            data: ["超时响应量"],
+            top: 5,
+            right: 0.5,
+            itemWidth: 8, // 图例标记的图形宽度。[ default: 25 ]
+            itemHeight: 8, // 图例标记的图形高度。[ default: 14 ]
+            // itemGap: 21, // 图例每项之间的间隔。[ default: 10 ]横向布局时为水平间隔，纵向布局时为纵向间隔。
+            textStyle: {
+                fontSize: 10,
+                color: '#00E4FF',
+            },
+        },
+        radar: {
+            shape: 'circle',
+            radius: '62%',
+            //center: ['43%', '60%'],
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 8
+                },
+            },
+            indicator: indicator,
+            splitArea: { // 坐标轴在 grid 区域中的分隔区域，默认不显示。
+                show: true,
+                areaStyle: { // 分隔区域的样式设置。
+                    color: ['rgba(255,255,255,0)', 'rgba(255,255,255,0)'], // 分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
+                }
+            },
+            axisLine: { //指向外圈文本的分隔线样式
+                lineStyle: {
+                    color: '#153269'
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#113865', // 分隔线颜色
+                    width: 1, // 分隔线线宽
+                }
+            },
+        },
+        series: [{
+            type: 'radar',
+            symbolSize: 5,
+            label: {
+                fontSize: 10,
+                show: false
+            },
+            // symbol: 'angle',
+            data: dataArr
+        }]
     };
     mychart.setOption(option)
 }
@@ -513,7 +947,7 @@ function coverCount() {
         title: [
             {
                 text: '覆盖量',
-                subtext: 1231+ '个',
+                subtext: 1231 + '个',
                 textStyle: {
                     fontSize: publicTextSize.sixTitle,
                     color: "white"
@@ -536,10 +970,10 @@ function coverCount() {
                 label: {
 
                     normal: {
-                        show:false,
+                        show: false,
                         position: 'inner',
                         textStyle: {
-                            show:false,
+                            show: false,
                             fontSize: 10
                         }
                     }
@@ -561,7 +995,7 @@ function coverCount() {
     mychart.setOption(option)
 }
 
-function riskMap(){
+function riskMap() {
 
     var yingtan = "/asset/get/s/data-1518338860057-By447tpLf.json";
     var yichun = "/asset/get/s/data-1518338852969-Hy677KTIf.json";
@@ -577,7 +1011,7 @@ function riskMap(){
 
     var guizhou = "public/mapsource/guizhou.json";
 
-    echarts.extendsMap = function(id, opt){
+    echarts.extendsMap = function (id, opt) {
         // 实例
         var chart = this.init(document.getElementById(id));
 
@@ -1088,143 +1522,171 @@ function riskMap(){
 function  rationalizeAdoptionAll(){
     var charts = echarts.init(document.querySelector('#rationalize-adoption-all'));
 
-    var val1data2 = [{
-            value: 0.2,
-            name: '业务',
-        },
-        {
-            value: 0.3,
-            name: '资金',
-        },
-        {
-            value: 0.4,
-            name: '实物',
-        },
-        {
-            value: 0.3,
-            name: '付现',
-        },
-        {
-            value: 0.1,
-            name: '异动',
-        }
-    ];
-
-    var arr = ['middleLost', 0.6, val1data2, '合理化建议采纳率'];
-
     var option = {
         title: {
-            top: '45%',
-            left: 'center',
-            text: arr[3],
+            text: '合理化建议采纳分析',
             textStyle: {
-                color: '#fff',
-                fontStyle: 'normal',
                 fontWeight: 'normal',
-                fontSize: publicTextSize.sixTitle
+                fontSize: publicTextSize.fourTitle,
+                color: '#F1F1F3'
             },
-            subtext: (arr[1] * 10000 / 100).toFixed(2) + '%',
-            subtextStyle: {
-                color: '#fff',
-                fontSize: publicTextSize.fourTitle
-            }
+            left: '5%'
         },
         tooltip: {
-            trigger: 'item',
-            formatter: function(res) {
-                console.log(res)
-
-                if (res.componentSubType == 'liquidFill') {
-                    return res.seriesName + ': ' + (res.value * 10000 / 100).toFixed(2) + '%';
-                } else {
-                    return '<span class="ii" style="background:' + res.color + ' "></span>' + res.name + ':<br/> ' + res.data.value;
+            trigger: 'axis',
+            axisPointer: {
+                lineStyle: {
+                    color: '#57617B'
                 }
             }
         },
+        legend: {
+            icon: 'circle',
+            // itemWidth: 14,
+            // itemHeight: 5,
+            itemGap: 13,
+            data: ['采纳量', '采纳率'],
+            right: '9.4%',
+            textStyle: {
+                fontSize: publicTextSize.sixTitle,
+                color: '#F1F1F3'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: publicLengDistance.two,
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            boundaryGap: false,
+            axisLine: {
+                lineStyle: {
+                    color: 'white'
+                }
+            },
+            axisLabel: {
+                margin: 10,
+                textStyle: {
+                    fontSize: publicTextSize.sixTitle
+                }
+            },
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        }],
+        yAxis: [{
+            type: 'value',
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: 'white'
+                }
+            },
+            axisLabel: {
+                margin: 10,
+                textStyle: {
+                    fontSize: publicTextSize.sixTitle
+                },
+                formatter: function(value){
+                   return value == 0?'':value;
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#57617B'
+                }
+            },
+            splitNumber: 5
+        },{
+            type: 'value',
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: 'white'
+                }
+            },
+            axisLabel: {
+                margin: 10,
+                textStyle: {
+                    fontSize: publicTextSize.sixTitle
+                },
+                formatter: function(value){
+                    if(value == 0){
+                        return '';
+                    }
+                    return value + '%';
+                }
+            },
+            splitLine: {
+                show: false,
+                lineStyle: {
+                    color: '#57617B'
+                }
+            }
+        }],
         series: [{
-            type: 'liquidFill',
+            yAxisIndex: 0,
+            name: '采纳量',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(137, 189, 27, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(137, 189, 27, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
             itemStyle: {
                 normal: {
-                    opacity: 0.4,
-                    shadowBlur: 0,
-                    shadowColor: 'blue'
+                    color: 'rgb(137,189,27)'
                 }
             },
-            name: arr[3],
-            data: [{
-                value: 0.6,
-                itemStyle: {
-                    normal: {
-                        color: '#53d5ff',
-                        opacity: 0.6
-                    }
-                }
-            }],
-            //  background: '#fff',
-            color: ['#53d5ff'],
-            center: ['50%', '50%'],
-            radius: '40%',
-            // radius: ['0%', '70%'],
-            backgroundStyle: {
-                color: 'rgba(0,0,0,0)'
-            },
-            label: {
+            data: [21,31,12,5,17,26,18,19,4,9,7,15]
+        }, {
+            yAxisIndex: 1,
+            name: '采纳率',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
                 normal: {
-                    formatter: '',
-                    textStyle: {
-                        fontSize: 12
-                    }
+                    width: 1
                 }
             },
-            outline: {
-                itemStyle: {
-                    borderColor: '#86c5ff',
-                    borderWidth: 0
-                },
-                borderDistance: 0
-            }
-        },
-            {
-                type: 'pie',
-                radius: ['40%', '55%'],
-                //radius: ['70%', '90%'],
-                color: macaronColor,
-                hoverAnimation: true, ////设置饼图默认的展开样式
-                label: {
-                    normal: {
-                        formatter: '{b}\n{d}',
-                        show: true,
-                        //show: false,
-                        position: 'outside',
-                        textStyle: {
-                            fontSize: publicTextSize.fiveTitle
-                        }
-                    },
-                },
-                labelLine: {
-                    normal: {
-                        show: true,
-                        length:5,
-                        length2:5
-                        //show: false
-                    }
-                },
-
-                // itemStyle: { // 此配置
-                //     normal: {
-                //         borderWidth: 0,
-                //         borderColor: '#fff',
-                //     },
-                //     // emphasis: {
-                //     //     borderWidth: 0,
-                //     //     shadowBlur: 2,
-                //     //     shadowOffsetX: 10,
-                //     //     shadowColor: 'rgba(0, 0, 0, 0.22)'
-                //     // }
-                // },
-                data: arr[2]
-            }
-        ]
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 136, 212, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 136, 212, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(0,136,212)'
+                }
+            },
+            data: [97.3,99.2,99.3,100.0,99.6,90.6,80.0,91.5,69.8,67.5,90.4,84.9]
+        }]
     };
 
     charts.setOption(option);
@@ -2009,6 +2471,27 @@ function scrollRationalizeAdoption(){
     });
 }
 
+
+/**
+ * 设置稽核效益下方滚动
+ *
+ */
+function scrollRationalizeAdoption1() {
+
+    var $container = $('#rationalize-adoption-text');
+
+    // alert($container.find("li.scroll-item").eq(0).outerWidth())
+
+    var carousel = new Carousel($container.children('ul'), {
+        transition: ".4s",
+        // switchBtn: $demo3.children("i.btn-direct"),
+        offsetDistance: $container.find("ul>li").eq(0).outerWidth()*2,
+        isAuto: true,
+        noLastAnimation: true
+    });
+}
+
+
 //稽核总量
 function auditMode() {
     var mychart = getCharts("auditMode");
@@ -2020,42 +2503,43 @@ function auditMode() {
         title: [
             {
                 text: '稽核总量',
-                subtext: 12312 ,
+                subtext: 12312,
                 textStyle: {
-                    fontSize:  publicTextSize.fourTitle,
+                    fontSize: publicTextSize.fourTitle,
                     color: "white"
                 },
                 subtextStyle: {
-                    fontSize: publicTextSize.oneTitle*0.9,
+                    fontSize: publicTextSize.oneTitle * 0.9,
                     color: 'white'
                 },
                 top: '38%',
                 left: 'center'
             }],
-        color: ['#00FFFF','#00bfff',],
+        color: ['#00FFFF', '#00bfff',],
         series: [
             {
                 name: '',
                 type: 'pie',
                 selectedMode: 'single',
                 /* radius: ['50%', '70%'],*/
-                radius: ['40%', '50%'],
-                center:["50%","50%"],
+                radius: ['40%', '60%'],
+                center: ["50%", "50%"],
                 label: {
                     normal: {
                         //show:false,
-                        show:true,
+                        show: true,
                         position: 'outside',
                         textStyle: {
                             fontSize: publicTextSize.sixTitle
-                        }
+                        },
+                        formatter: '{b}\n{d}%({c})'
                     }
                 },
                 labelLine: {
                     normal: {
                         show: true,
-                        length:5,
-                        length2:5
+                        length: 5,
+                        length2: 5
                     }
                 },
                 data: [
@@ -2069,6 +2553,459 @@ function auditMode() {
 }
 
 
+function riskMap2(){
+    var uploadedDataURL = "public/mapsource/guizhouQ.json";
+    var myChart = echarts.init(document.querySelector('#risk-map'))
+
+    /**
+     此版本通过设置geoindex && seriesIndex: [1] 属性来实现geo和map共存，
+     来达到hover散点和区域显示tooltip的效果
+
+     默认情况下，map series 会自己生成内部专用的 geo 组件。
+     但是也可以用这个 geoIndex 指定一个 geo 组件。
+     这样的话，map 和 其他 series（例如散点图）就可以共享一个 geo 组件了。
+     并且，geo 组件的颜色也可以被这个 map series 控制，从而用 visualMap 来更改。
+     当设定了 geoIndex 后，series-map.map 属性，
+     以及 series-map.itemStyle 等样式配置不再起作用，而是采用 geo 中的相应属性。
+
+     http://echarts.baidu.com/option.html#series-map.geoIndex
+
+     并且加了pin气泡图标以示数值大小
+     */
+    // myChart.showLoading();
+    $.getJSON(uploadedDataURL, function(geoJson) {
+        echarts.registerMap('guizhou', geoJson);
+        // myChart.hideLoading();
+        var geoCoordMap = {
+            '省公司': [106.807161, 26.857146],
+            '贵阳': [106.713478,26.578343],
+            '安顺': [105.932188,26.245544],
+            '遵义': [106.937265,27.706626],
+            '铜仁': [109.191555,27.718346],
+            '毕节': [105.28501,27.301693],
+            '黔南': [107.517156,26.258219],
+            '六盘水': [104.846743,26.584643],
+            '黔东南': [107.977488,26.583352],
+            '黔西南': [104.897971,25.08812],
+            '贵安': [106.32205,26.367844]
+        };
+        var moveLine = {
+            'normal':[
+                {"fromName":"省公司","toName":"贵阳","warnLevel":"red",'coords':[[106.807161, 26.857146],[106.713478,26.578343]]},
+                {"fromName":"省公司","toName":"安顺","warnLevel":"green",'coords':[[106.807161, 26.857146],[105.932188,26.245544]]},
+                {"fromName":"省公司","toName":"遵义","warnLevel":"red",'coords':[[106.807161, 26.857146],[106.937265,27.706626]]},
+                {"fromName":"省公司","toName":"铜仁","warnLevel":"yellow",'coords':[[106.807161, 26.857146],[109.191555,27.718346]]},
+                {"fromName":"省公司","toName":"毕节","warnLevel":"red",'coords':[[106.807161, 26.857146],[105.28501,27.301693]]},
+                {"fromName":"省公司","toName":"黔南","warnLevel":"yellow",'coords':[[106.807161, 26.857146],[107.517156,26.258219]]},
+                {"fromName":"省公司","toName":"六盘水","warnLevel":"red",'coords':[[106.807161, 26.857146],[104.846743,26.584643]]},
+                {"fromName":"省公司","toName":"黔东南","warnLevel":"green",'coords':[[106.807161, 26.857146],[107.977488,26.583352]]},
+                {"fromName":"省公司","toName":"黔西南","warnLevel":"red",'coords':[[106.807161, 26.857146],[104.897971,25.08812]]},
+                {"fromName":"省公司","toName":"贵安","warnLevel":"green",'coords':[[106.807161, 26.857146],[106.32205,26.367844]]}
+            ],
+            'warning':[
+
+            ]
+        };
+        var data = [
+            {name:'贵阳',value:190},
+            {name:'安顺',value:190},
+            {name:'遵义',value:190},
+            {name:'铜仁',value:190},
+            {name:'毕节',value:90},
+            {name:'黔南',value:120},
+            {name:'六盘水',value:120},
+            {name:'黔东南',value:120},
+            {name:'黔西南',value:120},
+            {name:'贵安',value:190}
+        ];
+
+        var convertData = function (data) {
+            var res = [];
+            for (var i = 0; i < data.length; i++) {
+                var geoCoord = geoCoordMap[data[i].name];
+                if (geoCoord) {
+                    res.push({
+                        name: data[i].name,
+                        value: geoCoord.concat(data[i].value)
+                    });
+                }
+            }
+            return res;
+        };
+
+
+        option = {
+            backgroundColor: 'transparent',
+            title: {
+                top:20,
+                text: '',
+                subtext: '',
+                x: 'center',
+                textStyle: {
+                    color: '#ccc'
+                }
+            },
+
+            // tooltip: {
+            //     trigger: 'item',
+            //     formatter: function (params) {
+            //         console.log(params)
+            //         if(typeof(params.value)[2] == "undefined"){
+            //             return params.name + ' : ' + params.value;
+            //         }else{
+            //             return params.name + ' : ' + params.value[2];
+            //         }
+            //     }
+            // },
+            legend: {
+                orient: 'vertical',
+                y: 'bottom',
+                x:'right',
+                data:['pm2.5'],
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            visualMap: {
+                show: false,
+                min: 0,
+                max: 500,
+                left: 'left',
+                top: 'bottom',
+                text: ['高', '低'], // 文本，默认为数值文本
+                calculable: true,
+                seriesIndex: [1],
+                inRange: {
+                    // color: ['#3B5077', '#031525'] // 蓝黑
+                    // color: ['#ffc0cb', '#800080'] // 红紫
+                    // color: ['#3C3B3F', '#605C3C'] // 黑绿
+                    //color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
+                    //color: ['#23074d', '#cc5333'] // 紫红
+                    // color: ['#00467F', '#A5CC82'] // 蓝绿
+                    // color: ['#1488CC', '#2B32B2'] // 浅蓝
+                    // color: ['#00467F', '#A5CC82'] // 蓝绿
+                    // color: ['#00467F', '#A5CC82'] // 蓝绿
+                    // color: ['#00467F', '#A5CC82'] // 蓝绿
+                    // color: ['#00467F', '#A5CC82'] // 蓝绿
+
+                }
+            },
+            // toolbox: {
+            //     show: true,
+            //     orient: 'vertical',
+            //     left: 'right',
+            //     top: 'center',
+            //     feature: {
+            //             dataView: {readOnly: false},
+            //             restore: {},
+            //             saveAsImage: {}
+            //             }
+            // },
+            geo: {
+                show: true,
+                map: 'guizhou',
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: false,
+                    }
+                },
+                roam: true,
+                itemStyle: {
+                    normal: {
+                        areaColor: 'transparent',
+                        borderColor: '#3fdaff',
+                        borderWidth: 2,
+                        shadowColor: 'rgba(63, 218, 255, 0.5)',
+                        shadowBlur: 30
+                    },
+                    emphasis: {
+                        areaColor: '#2B91B7',
+                    }
+                }
+            },
+            series : [
+                // {
+                //     name: 'light',
+                //     type: 'scatter',
+                //     coordinateSystem: 'geo',
+                //     data: convertData(data),
+                //     symbolSize: function (val) {
+                //         return val[2] / 10;
+                //     },
+                //     label: {
+                //         normal: {
+                //             formatter: '{b}',
+                //             position: 'right',
+                //             show: true
+                //         },
+                //         emphasis: {
+                //             show: true
+                //         }
+                //     },
+                //     itemStyle: {
+                //         normal: {
+                //             color: '#F4E925'
+                //         }
+                //     }
+                // },
+                {
+                    type: 'map',
+                    map: 'guizhou',
+                    geoIndex: 0,
+                    aspectScale: 0.75, //长宽比
+                    showLegendSymbol: false, // 存在legend时显示
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false,
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+                    roam: true,
+                    itemStyle: {
+                        normal: {
+                            areaColor: '#031525',
+                            borderColor: '#FFFFFF',
+                        },
+                        emphasis: {
+                            areaColor: '#2B91B7'
+                        }
+                    },
+                    animation: false,
+                    data: data
+                },
+                {
+                    type: 'effectScatter',
+                    coordinateSystem: 'geo',
+                    data: convertData(data),
+                    symbolSize: 5,
+                    showEffectOn: 'render',
+                    rippleEffect: {
+                        period: 3,
+                        scale: 7,
+                        brushType: 'stroke'
+                    },
+                    hoverAnimation: true,
+                    label: {
+                        normal: {
+                            formatter: '{b}',
+                            position: 'right',
+                            show: true,
+                            fontSize: publicTextSize.fiveTitle
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#F4E925',
+                            shadowBlur: 10,
+                            shadowColor: '#05C3F9'
+                        }
+                    },
+                    zlevel: 1
+                },
+                {
+                    name: '线路',
+                    type: 'lines',
+                    coordinateSystem: 'geo',
+                    zlevel: 2,
+                    large: true,
+                    effect: {
+                        show: true,
+                        constantSpeed: 30,
+                        symbol: 'arrow',//ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                        symbolSize: publicLengSize.nine,
+                        trailLength: 0.02
+                    },
+
+                    lineStyle: {
+                        normal: {
+                            color:function(params){
+                                console.log(params);
+                                return warnColor[params.data.warnLevel];
+                            },
+                            /*
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0, color: '#58B3CC'
+                                }, {
+                                    offset: 1, color: '#F58158'
+                                }], false),*/
+                            width: 2,
+                            opacity: 1.0,
+                            curveness: 0.15
+                        }
+                    },
+                    data: moveLine.normal
+                },
+                {
+                    name: '线路',
+                    type: 'lines',
+                    coordinateSystem: 'geo',
+                    zlevel: 2,
+                    large: true,
+                    effect: {
+                        show: true,
+                        constantSpeed: 30,
+                        symbol: 'arrow',//ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                        symbolSize: 10,
+                        trailLength: 0,
+                    },
+
+                    lineStyle: {
+                        normal: {
+                            color:'rgb(255, 0, 0)',
+                            width: 2,
+                            opacity: 1,
+                            curveness: 0.15
+                        }
+                    },
+                    data: moveLine.warning
+                }
+
+            ]
+        };
+        myChart.setOption(option);
+    });
+}
+
+function scrollIndicators(){
+    var $container = $('.scroll-indicators');
+
+    var carousel = new Carousel($container.children('ul'), {
+        noLastAnimation: true,
+        direction:"vertical",
+        scale: [.9],
+        transition: "1500ms",
+        offsetDistance:$container.find("ul>li").eq(0).outerHeight(),
+        // isClickCard: true,
+        isAuto: true,
+        interval: 3000
+    });
+}
+
+function recoveryAmount(){
+    var cahrts = getCharts("recovery-amount")
+    cahrts.setOption(waveOption({
+        text: '挽回损失金额',
+        subtext: '12',
+        unit: '万元',
+        value: '0.45'
+    }))
+}
+
+function correctAmount(){
+    var cahrts = getCharts("correct-amount")
+    cahrts.setOption(waveOption({
+        text: '纠正错误金额',
+        subtext: '2',
+        unit: '万元',
+        value: '0.25'
+    }))
+}
+
+function deductionAmount() {
+
+    var cahrts = getCharts("deduction-amount")
+    cahrts.setOption(waveOption({
+        text: '扣罚金额',
+        subtext: '5',
+        unit: '万元',
+        value: '0.35'
+    }))
+}
+
+function channelShutdowns() {
+
+    var cahrts = getCharts("channel-shutdowns")
+    cahrts.setOption(waveOption({
+        text: '渠道关停数',
+        subtext: '5',
+        unit: '',
+        value: '0.65'
+    }))
+}
+
+function waveOption(options) {
+    return {
+        title: {
+            top: '45%',
+            left: 'center',
+            text: options.text,
+            textStyle: {
+                color: '#fff',
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: publicTextSize.sixTitle
+            },
+            subtext: options.subtext + options.unit,
+            subtextStyle: {
+                color: '#fff',
+                fontSize: publicTextSize.fourTitle
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function(res) {
+
+                if (res.componentSubType == 'liquidFill') {
+                    return res.seriesName + ': ' + (res.value * 10000 / 100).toFixed(2) + '%';
+                } else {
+                    return '<span class="ii" style="background:' + res.color + ' "></span>' + res.name + ':<br/> ' + res.data.value;
+                }
+            }
+        },
+        series: {
+            type: 'liquidFill',
+            itemStyle: {
+                normal: {
+                    opacity: 0.4,
+                    shadowBlur: 0,
+                    shadowColor: 'blue'
+                }
+            },
+            name: options.text,
+            data: [{
+                value: options.value,
+                itemStyle: {
+                    normal: {
+                        color: '#53d5ff',
+                        opacity: 0.6
+                    }
+                }
+            }],
+            //  background: '#fff',
+            color: ['#53d5ff'],
+            center: ['50%', '50%'],
+            radius: '90%',
+            // radius: ['0%', '70%'],
+            backgroundStyle: {
+                color: 'rgba(0,0,0,0)'
+            },
+            label: {
+                normal: {
+                    formatter: '',
+                    textStyle: {
+                        fontSize: 12
+                    }
+                }
+            },
+            outline: {
+                itemStyle: {
+                    borderColor: '#86c5ff',
+                    borderWidth: 3
+                },
+                borderDistance: 1
+            }
+        }
+
+    }
+}
 
 function initIndexPage(){
     try{
@@ -2077,11 +3014,40 @@ function initIndexPage(){
 
     }
     try{
-        riskMap();
+        // riskMap();
     }catch (e) {
 
     }
 
+    try{
+        recoveryAmount();
+    }catch (e) {
+
+    }
+
+    try{
+        correctAmount()
+    }catch (e) {
+
+    }
+
+    try{
+        deductionAmount()
+    }catch (e) {
+
+    }
+
+    try{
+        channelShutdowns()
+    }catch (e) {
+
+    }
+
+    try{
+        riskMap2()
+    }catch (e) {
+
+    }
 
     try{
         rationalizeAdoptionBus()
@@ -2115,31 +3081,31 @@ function initIndexPage(){
         initAuditPowerPolygon(document.querySelector("#audit-power"), {
             polygon1: {
                 title1: "业务",
-                title2: "稽核总数",
-                value: "12,411,555",
+                title2: "稽核点总数",
+                value: "1555",
                 unit: ""
             },
             polygon2: {
                 title1: "资金",
-                title2: "稽核总数",
-                value: "9,321,44",
+                title2: "稽核点总数",
+                value: "9144",
                 unit: ""
             },
             polygon3: {
                 title1: "异动",
-                title2: "稽核总数",
+                title2: "稽核点总数",
                 value: "555",
                 unit: "万"
             },
             polygon4: {
                 title1: "付现",
-                title2: "稽核总数",
+                title2: "稽核点总数",
                 value: "55",
                 unit: "万"
             },
             polygon5: {
                 title1: "实物",
-                title2: "稽核总数",
+                title2: "稽核点总数",
                 value: "111",
                 unit: "万"
             }
@@ -2149,7 +3115,8 @@ function initIndexPage(){
     }
 
     try{
-        scrollRationalizeAdoption();
+        scrollRationalizeAdoption1();
+        scrollIndicators();
     }catch (e) {
 
     }
@@ -2181,7 +3148,12 @@ function initIndexPage(){
     }
     try{
         ticketStatus();
-    }catch (e) {
+    } catch (e) {
+
+    }
+    try {
+        overtimeWorkOrderRadar();
+    } catch (e) {
 
     }
     try{
@@ -2192,6 +3164,16 @@ function initIndexPage(){
     try{
         coverCount();
     }catch (e) {
+
+    }
+    try {
+        overtimeResponseRadar()
+    } catch (e) {
+
+    }
+    try {
+        overtimeResponse()
+    } catch (e) {
 
     }
 }

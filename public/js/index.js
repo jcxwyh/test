@@ -6,7 +6,7 @@ var macaronColor = ['#00FFFF','#00bfff','#b8cbe3','#5c91ff',
 
 var warnColor = {
     red: '#F58080',
-    green: '#47D8BE',
+    green: 'lime',
     yellow: '#F6D06F'
 };
 
@@ -506,7 +506,7 @@ function ticketStatus() {
                 axisLabel: {            // 刻度字体
                     // fontWeight: 'bolder',
                     color: '#fff',
-                    fontSize: 8
+                    fontSize: publicTextSize.sevenTitle
                     //shadowColor: '#fff', //默认透明
                     //shadowBlur: 5
                 },
@@ -537,7 +537,7 @@ function ticketStatus() {
                     offsetCenter: [0, "-15%"],
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 8,
+                        fontSize: publicTextSize.sixTitle,
                         fontStyle: 'italic',
                         color: '#fff',
 
@@ -558,7 +558,7 @@ function ticketStatus() {
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
                         color: '#fff',
-                        fontSize: 10
+                        fontSize: publicTextSize.fourTitle
                     }
                 },
                 data: [{value: 10, name: '超时在途量/笔'}]
@@ -661,12 +661,12 @@ function overtimeWorkOrderRadar() {
             icon: 'circle', //图例形状
             data: ["超时在途量"],
             top: 5,
-            right: 0.5,
+            right: publicLengDistance.five,
             itemWidth: 8, // 图例标记的图形宽度。[ default: 25 ]
             itemHeight: 8, // 图例标记的图形高度。[ default: 14 ]
             // itemGap: 21, // 图例每项之间的间隔。[ default: 10 ]横向布局时为水平间隔，纵向布局时为纵向间隔。
             textStyle: {
-                fontSize: 10,
+                fontSize: publicTextSize.sixTitle,
                 color: '#00E4FF',
             },
         },
@@ -677,7 +677,7 @@ function overtimeWorkOrderRadar() {
             name: {
                 textStyle: {
                     color: '#fff',
-                    fontSize: 8
+                    fontSize: publicTextSize.sevenTitle
                 },
             },
             indicator: indicator,
@@ -741,7 +741,7 @@ function overtimeResponse() {
                 axisLabel: {            // 刻度字体
                     // fontWeight: 'bolder',
                     color: '#fff',
-                    fontSize: 8
+                    fontSize: publicTextSize.sevenTitle
                     //shadowColor: '#fff', //默认透明
                     //shadowBlur: 5
                 },
@@ -772,7 +772,7 @@ function overtimeResponse() {
                     offsetCenter: [0, "-15%"],
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 8,
+                        fontSize: publicTextSize.sixTitle,
                         fontStyle: 'italic',
                         color: '#fff',
 
@@ -793,7 +793,7 @@ function overtimeResponse() {
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
                         color: '#fff',
-                        fontSize: 10
+                        fontSize: publicTextSize.fourTitle
                     }
                 },
                 data: [{value: 50, name: '超时响应量/笔'}]
@@ -875,7 +875,9 @@ function overtimeResponseRadar() {
     ];
     var colorArr = ['#4A99FF', '#4BFFFC']; //颜色
     option = {
-        tooltip: {},
+        tooltip: {
+
+        },
         color: colorArr,
         //radius:"50%",
         center: ['50%', '50%'],
@@ -884,12 +886,12 @@ function overtimeResponseRadar() {
             icon: 'circle', //图例形状
             data: ["超时响应量"],
             top: 5,
-            right: 0.5,
+            right: publicLengDistance.five,
             itemWidth: 8, // 图例标记的图形宽度。[ default: 25 ]
             itemHeight: 8, // 图例标记的图形高度。[ default: 14 ]
             // itemGap: 21, // 图例每项之间的间隔。[ default: 10 ]横向布局时为水平间隔，纵向布局时为纵向间隔。
             textStyle: {
-                fontSize: 10,
+                fontSize: publicTextSize.sixTitle,
                 color: '#00E4FF',
             },
         },
@@ -900,7 +902,7 @@ function overtimeResponseRadar() {
             name: {
                 textStyle: {
                     color: '#fff',
-                    fontSize: 8
+                    fontSize: publicTextSize.sevenTitle
                 },
             },
             indicator: indicator,
@@ -926,7 +928,7 @@ function overtimeResponseRadar() {
             type: 'radar',
             symbolSize: 5,
             label: {
-                fontSize: 10,
+                fontSize: publicTextSize.sevenTitle,
                 show: false
             },
             // symbol: 'angle',
@@ -1553,6 +1555,7 @@ function  rationalizeAdoptionAll(){
             }
         },
         grid: {
+            top: publicLengDistance.two,
             left: '3%',
             right: '4%',
             bottom: publicLengDistance.two,
@@ -1563,13 +1566,14 @@ function  rationalizeAdoptionAll(){
             boundaryGap: false,
             axisLine: {
                 lineStyle: {
-                    color: 'white'
+                    color: '#57617B'
                 }
             },
             axisLabel: {
                 margin: 10,
                 textStyle: {
-                    fontSize: publicTextSize.sixTitle
+                    fontSize: publicTextSize.sixTitle,
+                    color: 'white'
                 }
             },
             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
@@ -1581,13 +1585,14 @@ function  rationalizeAdoptionAll(){
             },
             axisLine: {
                 lineStyle: {
-                    color: 'white'
+                    color: '#57617B'
                 }
             },
             axisLabel: {
                 margin: 10,
                 textStyle: {
-                    fontSize: publicTextSize.sixTitle
+                    fontSize: publicTextSize.sixTitle,
+                    color: 'white'
                 },
                 formatter: function(value){
                    return value == 0?'':value;
@@ -1606,13 +1611,14 @@ function  rationalizeAdoptionAll(){
             },
             axisLine: {
                 lineStyle: {
-                    color: 'white'
+                    color: '#57617B'
                 }
             },
             axisLabel: {
                 margin: 10,
                 textStyle: {
-                    fontSize: publicTextSize.sixTitle
+                    fontSize: publicTextSize.sixTitle,
+                    color: 'white'
                 },
                 formatter: function(value){
                     if(value == 0){
@@ -2477,17 +2483,13 @@ function scrollRationalizeAdoption(){
  *
  */
 function scrollRationalizeAdoption1() {
-
     var $container = $('#rationalize-adoption-text');
-
-    // alert($container.find("li.scroll-item").eq(0).outerWidth())
-
-    var carousel = new Carousel($container.children('ul'), {
-        transition: ".4s",
-        // switchBtn: $demo3.children("i.btn-direct"),
-        offsetDistance: $container.find("ul>li").eq(0).outerWidth()*2,
-        isAuto: true,
-        noLastAnimation: true
+    $container.bxSlider({
+        slideWidth: $container.outerWidth(),
+        minSlides: 1,
+        auto: true,
+        autoDelay: 800,
+        autoHover: true
     });
 }
 
@@ -2788,8 +2790,8 @@ function riskMap2(){
                     symbolSize: 5,
                     showEffectOn: 'render',
                     rippleEffect: {
-                        period: 3,
-                        scale: 7,
+                        period: 9,
+                        scale: 6,
                         brushType: 'stroke'
                     },
                     hoverAnimation: true,
@@ -2827,7 +2829,6 @@ function riskMap2(){
                     lineStyle: {
                         normal: {
                             color:function(params){
-                                console.log(params);
                                 return warnColor[params.data.warnLevel];
                             },
                             /*
@@ -2836,7 +2837,7 @@ function riskMap2(){
                                 }, {
                                     offset: 1, color: '#F58158'
                                 }], false),*/
-                            width: 2,
+                            width: 1,
                             opacity: 1.0,
                             curveness: 0.15
                         }
@@ -2876,16 +2877,25 @@ function riskMap2(){
 
 function scrollIndicators(){
     var $container = $('.scroll-indicators');
+    $container.bxSlider({
+        mode: 'vertical',
+        slideWidth: $container.outerWidth(),
+        minSlides: 1,
+        auto: true,
+        autoDelay: 800,
+        autoHover: true
+    });
+}
 
-    var carousel = new Carousel($container.children('ul'), {
-        noLastAnimation: true,
-        direction:"vertical",
-        scale: [.9],
-        transition: "1500ms",
-        offsetDistance:$container.find("ul>li").eq(0).outerHeight(),
-        // isClickCard: true,
-        isAuto: true,
-        interval: 3000
+function scrollAuditCount(){
+    var $container = $('.audit-count-scroll');
+    $container.bxSlider({
+        // mode: 'vertical',
+        slideWidth: $container.outerWidth(),
+        minSlides: 1,
+        auto: true,
+        autoDelay: 200,
+        autoHover: true,
     });
 }
 
@@ -2895,7 +2905,8 @@ function recoveryAmount(){
         text: '挽回损失金额',
         subtext: '12',
         unit: '万元',
-        value: '0.45'
+        value: '0.45',
+        color: '#389af4'
     }))
 }
 
@@ -2905,7 +2916,8 @@ function correctAmount(){
         text: '纠正错误金额',
         subtext: '2',
         unit: '万元',
-        value: '0.25'
+        value: '0.25',
+        color: '#a181fc'
     }))
 }
 
@@ -2916,7 +2928,8 @@ function deductionAmount() {
         text: '扣罚金额',
         subtext: '5',
         unit: '万元',
-        value: '0.35'
+        value: '0.35',
+        color: '#53d5ff'
     }))
 }
 
@@ -2927,26 +2940,27 @@ function channelShutdowns() {
         text: '渠道关停数',
         subtext: '5',
         unit: '',
-        value: '0.65'
+        value: '0.10',
+        color: '#ff8c37'
     }))
 }
 
 function waveOption(options) {
     return {
         title: {
-            top: '45%',
+            top: '40%',
             left: 'center',
             text: options.text,
             textStyle: {
                 color: '#fff',
                 fontStyle: 'normal',
                 fontWeight: 'normal',
-                fontSize: publicTextSize.sixTitle
+                fontSize: publicTextSize.fourTitle
             },
             subtext: options.subtext + options.unit,
             subtextStyle: {
                 color: '#fff',
-                fontSize: publicTextSize.fourTitle
+                fontSize: publicTextSize.threeTitle
             }
         },
         tooltip: {
@@ -2974,13 +2988,13 @@ function waveOption(options) {
                 value: options.value,
                 itemStyle: {
                     normal: {
-                        color: '#53d5ff',
+                        color: options.color,
                         opacity: 0.6
                     }
                 }
             }],
             //  background: '#fff',
-            color: ['#53d5ff'],
+            color: [options.color],
             center: ['50%', '50%'],
             radius: '90%',
             // radius: ['0%', '70%'],
@@ -2997,7 +3011,7 @@ function waveOption(options) {
             },
             outline: {
                 itemStyle: {
-                    borderColor: '#86c5ff',
+                    borderColor: options.color,
                     borderWidth: 3
                 },
                 borderDistance: 1
@@ -3049,67 +3063,59 @@ function initIndexPage(){
 
     }
 
+    // try{
+    //     rationalizeAdoptionBus()
+    // }catch (e) {
+    //
+    // }
+    //
+    // try{
+    //     rationalizeAdoptionCash()
+    // }catch (e) {
+    //
+    // }
+    //
+    // try{
+    //     rationalizeAdoptionGoods()
+    // }catch (e) {
+    //
+    // }
+    //
+    // try{
+    //     rationalizeAdoptionFunds()
+    // }catch (e) {
+    //
+    // }
+    // try{
+    //     rationalizeAdoptionChange()
+    // }catch (e) {
+    //
+    // }
     try{
-        rationalizeAdoptionBus()
-    }catch (e) {
+        // initAuditPowerPolygon(document.querySelector("#audit-power"), {
+        //     polygon1: {
+        //         title1: "业务",
+        //         title2: "稽核点总数"
+        //     },
+        //     polygon2: {
+        //         title1: "资金",
+        //         title2: "稽核点总数",
+        //     },
+        //     polygon3: {
+        //         title1: "异动",
+        //         title2: "稽核点总数",
+        //     },
+        //     polygon4: {
+        //         title1: "付现",
+        //         title2: "稽核点总数",
+        //     },
+        //     polygon5: {
+        //         title1: "实物",
+        //         title2: "稽核点总数",
+        //     }
+        // });
 
-    }
-
-    try{
-        rationalizeAdoptionCash()
-    }catch (e) {
-
-    }
-
-    try{
-        rationalizeAdoptionGoods()
-    }catch (e) {
-
-    }
-
-    try{
-        rationalizeAdoptionFunds()
-    }catch (e) {
-
-    }
-    try{
-        rationalizeAdoptionChange()
-    }catch (e) {
-
-    }
-    try{
-        initAuditPowerPolygon(document.querySelector("#audit-power"), {
-            polygon1: {
-                title1: "业务",
-                title2: "稽核点总数",
-                value: "1555",
-                unit: ""
-            },
-            polygon2: {
-                title1: "资金",
-                title2: "稽核点总数",
-                value: "9144",
-                unit: ""
-            },
-            polygon3: {
-                title1: "异动",
-                title2: "稽核点总数",
-                value: "555",
-                unit: "万"
-            },
-            polygon4: {
-                title1: "付现",
-                title2: "稽核点总数",
-                value: "55",
-                unit: "万"
-            },
-            polygon5: {
-                title1: "实物",
-                title2: "稽核点总数",
-                value: "111",
-                unit: "万"
-            }
-        });
+        // initAuditPower();
     }catch (e) {
 
     }
@@ -3117,6 +3123,7 @@ function initIndexPage(){
     try{
         scrollRationalizeAdoption1();
         scrollIndicators();
+        scrollAuditCount();
     }catch (e) {
 
     }

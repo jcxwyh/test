@@ -24,7 +24,8 @@
         this.timer = null;//定时器
         this.cssObj = {};//样式存储对象
 
-        this.noLastAnimation = obj.noLastAnimation || true; // 去掉最后一个动画动作
+        this.noLastAnimation = obj.noLastAnimation || false; // 去掉最后一个动画动作
+        this.onlyTwo = obj.onlyTwo || false; // 优化仅仅只有两个滚动元素时的尴尬
 
         this.certainStyle();
         this.switchEffect();

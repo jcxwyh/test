@@ -2182,3 +2182,8 @@ section{
     font-size: 1vw;
     color: #fa5656;
 }
+
+/* 去掉bxslider插件的工具条 */
+.bx-controls{
+    display: none !important;
+}

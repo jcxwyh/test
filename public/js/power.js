@@ -4,9 +4,7 @@
  * {
  *     polygon1: {
  *          title1: '',
- *          title2: '',
- *          value: '',
- *          unit: ''
+ *          title2: ''
  *     },
  *     polygon2: {
  *
@@ -237,16 +235,16 @@ function insertTextTag(gTag, data, options){
     var text2 = svgUtils.createSvgTag('text', options.text2);
     text2.innerHTML = data.title2;
 
-    var value = svgUtils.createSvgTag('text', options.value);
-    value.innerHTML = data.value;
-
-    var unit = svgUtils.createSvgTag('text', options.unit);
-    unit.innerHTML = data.unit;
+    // var value = svgUtils.createSvgTag('text', options.value);
+    // value.innerHTML = data.value;
+    //
+    // var unit = svgUtils.createSvgTag('text', options.unit);
+    // unit.innerHTML = data.unit;
 
     gTag.appendChild(text1);
     gTag.appendChild(text2);
-    gTag.appendChild(value);
-    gTag.appendChild(unit);
+    // gTag.appendChild(value);
+    // gTag.appendChild(unit);
 }
 
 /**

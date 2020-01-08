@@ -283,6 +283,7 @@
 
 .month-selector-icon{
     position: absolute;
+    /*float: left;*/
     transform: translate(-120%,25%);
     cursor: pointer;
 }

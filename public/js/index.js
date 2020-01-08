@@ -1,8 +1,8 @@
 // 供参考的渐变色方案
 // 供参考的渐变色方案
 
-var macaronColor = ["#eb3600", "#d0570e",
-    "#ffc257", "#34da62",
+var macaronColor = ["#389af4", "#a181fc",
+    "#53d5ff", "#ff8c37",
     "#00e9db", "#00c0e9"];
 
 var warnColor = {
@@ -1562,7 +1562,7 @@ function  rationalizeAdoptionAll(){
             top: publicLengDistance.two,
             left: '3%',
             right: '4%',
-            bottom: publicLengDistance.two,
+            bottom: publicLengDistance.four,
             containLabel: true
         },
         xAxis: [{

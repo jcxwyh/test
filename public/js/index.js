@@ -2,8 +2,8 @@
 // 供参考的渐变色方案
 
 var macaronColor = ["#389af4", "#a181fc",
-    "#53d5ff", "#ff8c37",
-    "#00e9db", "#00c0e9"];
+    "#53d5ff", "#ffbf61",
+    "#00e9db", "#6446e9"];
 
 var warnColor = {
     red: '#f12',
@@ -114,7 +114,7 @@ function dispatchMethod() {
                 top: '40%',
                 left: 'center'
             }],
-        color: ['#00FFFF', '#00bfff',],
+        color: ['#53d5ff', '#ffbf61',],
         series: [
             {
                 name: '',
@@ -351,7 +351,7 @@ function receiverType() {
                         x2: 0,
                         y2: 1,
                         colorStops: [{
-                            offset: 0, color: '#e462b2' // 0% 处的颜色
+                            offset: 0, color: '#a181fc' // 0% 处的颜色
                         }, {
                             offset: 1, color: '#c4acd4' // 100% 处的颜色
                         }],
@@ -384,9 +384,9 @@ function receiverType() {
                         x2: 0,
                         y2: 1,
                         colorStops: [{
-                            offset: 0, color: '#e44d40' // 0% 处的颜色
+                            offset: 0, color: '#53d5ff' // 0% 处的颜色
                         }, {
-                            offset: 1, color: '#d4a5a8' // 100% 处的颜色
+                            offset: 1, color: '#acccd4' // 100% 处的颜色
                         }],
                         globalCoord: false // 缺省为 false
                     },
@@ -417,9 +417,9 @@ function receiverType() {
                         x2: 0,
                         y2: 1,
                         colorStops: [{
-                            offset: 0, color: '#8ce42e' // 0% 处的颜色
+                            offset: 0, color: '#ff8c37' // 0% 处的颜色
                         }, {
-                            offset: 1, color: '#c1d498' // 100% 处的颜色
+                            offset: 1, color: '#ced4b0' // 100% 处的颜色
                         }],
                         globalCoord: false // 缺省为 false
                     },
@@ -450,9 +450,9 @@ function receiverType() {
                         x2: 0,
                         y2: 1,
                         colorStops: [{
-                            offset: 0, color: '#4414e4' // 0% 处的颜色
+                            offset: 0, color: '#c1d498' // 0% 处的颜色
                         }, {
-                            offset: 1, color: '#836dd4' // 100% 处的颜色
+                            offset: 1, color: '#91c9d4' // 100% 处的颜色
                         }],
                         globalCoord: false // 缺省为 false
                     },
@@ -2521,7 +2521,7 @@ function auditMode() {
                 top: '38%',
                 left: 'center'
             }],
-        color: ['#00FFFF', '#00bfff',],
+        color: ['#ffbf61', '#389af4',],
         series: [
             {
                 name: '',

@@ -199,9 +199,9 @@
     font-weight: bold;
 }
 
-/*.column-header-title{*/
-/*    background: transparent;*/
-/*}*/
+.column-header-title{
+    border-left: 0.3em solid #6ffffb;
+}
 
 .column-header-title a{
     /*background: rgba(62,171,190,0.1);*/
@@ -284,7 +284,7 @@
 .month-selector-icon{
     position: absolute;
     /*float: left;*/
-    transform: translate(-120%,25%);
+    transform: translate(-130%,25%);
     cursor: pointer;
 }
 

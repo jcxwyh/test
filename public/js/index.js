@@ -3190,7 +3190,7 @@ function initIndexPage(){
 }
 
 window.onload = function(){
-    initIndexPage();
+
     $('.audit-input').datepicker({
         autoHide: true,
         autoPick: true,
@@ -3201,13 +3201,14 @@ window.onload = function(){
         yearSuffix: '',
         months: ['1','2','3','4','5','6','7','8','9','10','11','12'],
         monthsShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-        offset: '15'
+        offset: '15',
+        trigger: '.month-selector-icon'
     });
 
-    $('.month-selector-icon').on('click', function(){
-        $('.audit-input').datepicker('show')
-    });
-
+    // $('.month-selector-icon').on('click', function(){
+    //     $('.audit-input').datepicker('show')
+    // });
+    initIndexPage();
     $('body').css({
         visibility: "visible"}
     )

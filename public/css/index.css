@@ -286,6 +286,7 @@
     /*float: left;*/
     transform: translate(-130%,25%);
     cursor: pointer;
+    z-index: -1;
 }
 
 .audit-module-bg{
@@ -439,4 +440,8 @@ body {
     text-align: center;
     display: inline-block;
     font-weight: bold;
+}
+
+.datepicker-container{
+    top: 15vh !important;
 }

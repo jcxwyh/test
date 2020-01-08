@@ -3201,8 +3201,7 @@ window.onload = function(){
         yearSuffix: '',
         months: ['1','2','3','4','5','6','7','8','9','10','11','12'],
         monthsShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-        offset: '15',
-        trigger: '.month-selector-icon'
+        offset: '15'
     });
 
     // $('.month-selector-icon').on('click', function(){

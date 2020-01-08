@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.audit-nav-menus{
+    list-style-type:none;
+    text-align: right;
+
+}
+
+.audit-nav-menus > .audit-nav-menu{
+    display: inline-block;
+    border-bottom-left-radius: 0.6em;
+    border-bottom-right-radius: 0.6em;
+    cursor: pointer;
+}
+
+.audit-nav-menus > .audit-nav-menu.menu-active{
+    background: #9ADBEE;
+    color: black !important;
+}
+
+.audit-nav-menus > .audit-nav-menu > div {
+    color: white !important;
+    font-weight: bold;
+}
+
+.audit-nav-menus > .audit-nav-menu.menu-active > div {
+    color: black !important;
+}
+
+.audit-nav-menus > .audit-nav-menu:hover{
+    background: rgba(154,219,238,0.5);
+    color: black !important;
+}
+
+.audit-nav-menus > .menu-active:hover{
+    background: #9ADBEE;
+}

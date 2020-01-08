@@ -1,11 +1,12 @@
 // 供参考的渐变色方案
 // 供参考的渐变色方案
 
-var macaronColor = ['#00FFFF','#00bfff','#b8cbe3','#5c91ff',
-    '#70c0ff','#FFFFF0'];
+var macaronColor = ["#eb3600", "#d0570e",
+    "#ffc257", "#34da62",
+    "#00e9db", "#00c0e9"];
 
 var warnColor = {
-    red: '#F58080',
+    red: '#f12',
     green: 'lime',
     yellow: '#F6D06F'
 };
@@ -217,14 +218,14 @@ var count = 0;
 function receiverType() {
     var xData = [];
     var yData = [];
-    var bottom = 40;
+    var bottom = publicLengDistance.one*1.3;
     if (count == 0) {
         xData = ['市场部', '信息技术部', '财务部', '大数据中心', '政企分公司'];
         yData = [120, 200, 150, 80, 70]
     } else {
         xData = ['贵阳', '遵义', '安顺', '黔南', '黔东南', '毕节', '铜仁', '六盘水', '黔西南', '贵安'];
         yData = [120, 200, 150, 80, 70, 142, 201, 59, 88, 96];
-        bottom = 40;
+        bottom = publicLengDistance.two;
     }
     var mychart = getCharts("receiverType");
     var option = {
@@ -493,7 +494,7 @@ function ticketStatus() {
                 min: 0,
                 max: 100,
                 splitNumber: 10,
-                radius: '85%',
+                radius: '98%',
                 axisLine: {//坐标轴
                     // show:false,// 是否显示仪表盘轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
@@ -721,6 +722,9 @@ function overtimeResponse() {
         tooltip: {
             formatter: '{a} <br/>{c}'
         },
+        grid: {
+            top: publicLengDistance.one*2
+        },
         series: [
             {
                 name: '超时在途量',
@@ -728,7 +732,7 @@ function overtimeResponse() {
                 min: 0,
                 max: 100,
                 splitNumber: 10,
-                radius: '85%',
+                radius: '98%',
                 axisLine: {//坐标轴
                     // show:false,// 是否显示仪表盘轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
@@ -3187,6 +3191,23 @@ function initIndexPage(){
 
 window.onload = function(){
     initIndexPage();
+    $('.audit-input').datepicker({
+        autoHide: true,
+        autoPick: true,
+        language: 'zh-CN',
+        format: 'yyyy年mm月',
+        endDate: new Date(),
+        startView: 1,
+        yearSuffix: '',
+        months: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+        monthsShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+        offset: '15'
+    });
+
+    $('.month-selector-icon').on('click', function(){
+        $('.audit-input').datepicker('show')
+    });
+
     $('body').css({
         visibility: "visible"}
     )

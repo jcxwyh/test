@@ -17,23 +17,41 @@
     <script src="public/echarts/echarts-liquidfill.min.js"></script>
     <script src="public/js/public.js"></script>
     <script type="text/javascript" src="public/js/svg-utils.js"></script>
-    <script type="text/javascript" src="public/js/power.js"></script>
+<!--    <script type="text/javascript" src="public/js/power.js"></script>-->
+    <script type="text/javascript" src="public/js/index.js"></script>
+
     <script>
-        //页面初始化
-        $(function () {
+        $(function(){
             var width = window.screen.width;
             if (width > 1920) {
                 $.getScript("public/js/publicParameter4K.js", function () {
                     console.info('4k');
+                    initIndexPage();
                 });
             } else {
                 $.getScript("public/js/publicParameter2K.js", function () {
                     console.info('2k');
+                    initIndexPage();
                 });
             }
-        });
+            $('.audit-input').datepicker({
+                autoHide: true,
+                autoPick: true,
+                language: 'zh-CN',
+                format: 'yyyy年mm月',
+                endDate: new Date(),
+                startView: 1,
+                yearSuffix: '',
+                months: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+                monthsShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+                offset: '15'
+            });
+
+            $('body').css({
+                visibility: "visible"}
+            )
+        })
     </script>
-    <script type="text/javascript" src="public/js/index.js"></script>
 </head>
 <body style="visibility: hidden;">
 <div class="col-100 height6">

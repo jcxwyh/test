@@ -3189,27 +3189,3 @@ function initIndexPage(){
     }
 }
 
-window.onload = function(){
-
-    $('.audit-input').datepicker({
-        autoHide: true,
-        autoPick: true,
-        language: 'zh-CN',
-        format: 'yyyy年mm月',
-        endDate: new Date(),
-        startView: 1,
-        yearSuffix: '',
-        months: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-        monthsShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-        offset: '15'
-    });
-
-    // $('.month-selector-icon').on('click', function(){
-    //     $('.audit-input').datepicker('show')
-    // });
-    initIndexPage();
-    $('body').css({
-        visibility: "visible"}
-    )
-};
-

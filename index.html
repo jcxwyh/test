@@ -46,11 +46,13 @@
                 monthsShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
                 offset: '15'
             });
+        })
 
+        window.onload = function(){
             $('body').css({
                 visibility: "visible"}
             )
-        })
+        }
     </script>
 </head>
 <body style="visibility: hidden;">
@@ -125,15 +127,16 @@
                             <div class="col-50 f-left height19" id="dispatchType"></div>
                         </div>
                         <div class="col-45 f-left height19">
-                            <div class="col-100 f-left height3">
-                                <div class="col-50 f-left column-header-subtitle height3">
+                            <div class="col-100 f-left height2">
+                                <div class="col-10 height2 f-left">&nbsp;</div>
+                                <div class="col-40 audit-subtitle f-left height2 title-level1" style="color: white">
                                    工单接收情况
                                 </div>
-                                 <div class="col-5 height3 f-left">&nbsp;</div>
-                                <div class="tabs col-45 f-left">
-                                    <div class="tab-title height3">
-                                        <a class="item1 item-cur">省公司</a>
-                                        <a class="item2">分公司</a>
+                                <div class="col-5 height2 f-left">&nbsp;</div>
+                                <div class="audit-tabs col-45 f-left height2">
+                                    <div class="audit-tab-title height2">
+                                        <a class="audit-tab-item item-cur title-level1">省公司</a>
+                                        <a class="audit-tab-item title-level1">分公司</a>
                                     </div>
                                 </div>
                             </div>

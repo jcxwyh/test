@@ -465,16 +465,23 @@ function receiverType() {
 }
 
 function clickTab() {
-    $(".tab-title a").click(function () {
-        if ($(this).text() == "省公司") {
-            $(".item1").addClass("item-cur");
-            $(".item2").removeClass("item-cur");
-            count = 0;
-        } else {
-            $(".item2").addClass("item-cur");
-            $(".item1").removeClass("item-cur");
-            count = 1;
+    $(".audit-tab-title .audit-tab-item").click(function () {
+        if($(this).hasClass('item-cur')){
+            return;
         }
+
+        $(this).toggleClass('item-cur');
+        $(this).siblings('.audit-tab-item').toggleClass('item-cur');
+        count = count === 0?1:0;
+        // if ($(this).text() == "省公司") {
+        //     $(".item1").addClass("item-cur");
+        //     $(".item2").removeClass("item-cur");
+        //     count = 0;
+        // } else {
+        //     $(".item2").addClass("item-cur");
+        //     $(".item1").removeClass("item-cur");
+        //     count = 1;
+        // }
         receiverType();
     })
 }

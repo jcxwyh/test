@@ -1558,7 +1558,7 @@ function  rationalizeAdoptionAll(){
             // itemWidth: 14,
             // itemHeight: 5,
             itemGap: 13,
-            data: ['采纳量', '采纳率'],
+            data: ['提出数','采纳量', '采纳率'],
             right: '9.4%',
             textStyle: {
                 fontSize: publicTextSize.sixTitle,
@@ -1647,6 +1647,35 @@ function  rationalizeAdoptionAll(){
         }],
         series: [{
             yAxisIndex: 0,
+            name: '提出数',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: '#28a745'
+                    }, {
+                        offset: 0.9,
+                        color: 'rgba(137, 189, 27, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#28a745'
+                }
+            },
+            data: [28,39,16,10,19,29,21,23,5,11,8,18]
+        },{
+            yAxisIndex: 0,
             name: '采纳量',
             type: 'line',
             smooth: true,
@@ -1659,10 +1688,10 @@ function  rationalizeAdoptionAll(){
                 normal: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
-                        color: 'rgba(137, 189, 27, 0.3)'
+                        color: '#ff8c37'
                     }, {
-                        offset: 0.8,
-                        color: 'rgba(137, 189, 27, 0)'
+                        offset: 0.9,
+                        color: 'transparent'
                     }], false),
                     shadowColor: 'rgba(0, 0, 0, 0.1)',
                     shadowBlur: 10
@@ -1670,7 +1699,7 @@ function  rationalizeAdoptionAll(){
             },
             itemStyle: {
                 normal: {
-                    color: 'rgb(137,189,27)'
+                    color: '#ff8c37'
                 }
             },
             data: [21,31,12,5,17,26,18,19,4,9,7,15]
@@ -1688,9 +1717,9 @@ function  rationalizeAdoptionAll(){
                 normal: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
-                        color: 'rgba(0, 136, 212, 0.3)'
+                        color: '#a181fc'
                     }, {
-                        offset: 0.8,
+                        offset: 0.9,
                         color: 'rgba(0, 136, 212, 0)'
                     }], false),
                     shadowColor: 'rgba(0, 0, 0, 0.1)',
@@ -1699,7 +1728,7 @@ function  rationalizeAdoptionAll(){
             },
             itemStyle: {
                 normal: {
-                    color: 'rgb(0,136,212)'
+                    color: '#a181fc'
                 }
             },
             data: [97.3,99.2,99.3,100.0,99.6,90.6,80.0,91.5,69.8,67.5,90.4,84.9]

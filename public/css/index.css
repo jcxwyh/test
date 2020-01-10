@@ -54,6 +54,22 @@
     font-size: 0.9vw;
 }
 
+.icon-level1{
+    font-size:1vw !important;
+}
+
+.icon-level2{
+    font-size:1.5vw !important;
+}
+
+.icon-level3{
+    font-size:2vw !important;
+}
+
+.icon-level4{
+    font-size:2.5vw !important;
+}
+
 
 .unit-level1,
 .unit-level2,
@@ -65,6 +81,8 @@
 .number-level4{
     font-weight: bold;
 }
+
+
 
 .color-default{
     color: #6ffffb;
@@ -186,10 +204,10 @@
 /*}*/
 .knowledge-title{
     margin-left: 0.4em;
-    font-size: 0.7vw;
+    font-size: 0.8vw;
     text-align: left;
     display: inline-block;
-    width: 5.5em;
+    /*width: 5.5em;*/
 }
 
 .knowledge-number{
@@ -455,4 +473,34 @@ body {
 .audit-tabs > .audit-tab-title > .item-cur{
     color: #6ffffb;
     border-bottom: 0.2em solid #6ffffb;
+}
+
+.date-type-change{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    text-align: center;
+    align-content: space-around;
+    height: 100%;
+    border: 1px solid #6ffffb;
+
+}
+.date-type-change > div{
+    width: 50%;
+    height: 100%;
+    padding-top: 0.35em;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(82,218,255,0.1);
+}
+
+.date-type-change > div[class~=active]{
+    color: white !important;
+    background: rgba(82,218,255,0.9);
+
+}
+
+.date-type-change > div:hover{
+    background: rgba(82,218,255,0.9);
 }

@@ -9,17 +9,18 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-around;
+            /*justify-content: space-around;*/
             align-items: center;
             align-content: flex-start;
             width: 100%;
             margin-top: 7.6em;
+            border-image: linear-gradient(310deg,#01ffd7,transparent) 1 1;
         }
         .color-container > div{
             flex-grow: 0;
             flex-shrink: 0;
             flex-basis: auto;
-            width: 20%;
+            width: 19.5%;
             margin: 0.5em;
             height:60px;
             border-radius: 0.5em;
@@ -52,36 +53,126 @@
     </style>
 </head>
 <body>
-    <div class="color-select-div">复制成功</div>
-    <div class="color-container">
-        <div style="background-color: #6ffffb">#6ffffb</div>
-        <div style="background-color: #FFE4C4">#FFE4C4</div>
-        <div style="background-color: #FFD700">#FFD700</div>
-        <div style="background-color: #00FA9A">#00FA9A</div>
-        <div style="background-color: #40E0D0">#40E0D0</div>
-        <div style="background-color: #BA55D3">#BA55D3</div>
-        <div style="background-color: #FFC0CB">#FFC0CB</div>
-        <div style="background-color: #D87093">#D87093</div>
-        <div style="background-color: #FFFFF0">#FFFFF0</div>
-        <div style="background-color: #FFFFE0">#FFFFE0</div>
-        <div style="background-color: #7FFFD4">#7FFFD4</div>
-        <div style="background-color: #87CEFA">#87CEFA</div>
-        <div style="background-color: #40E0D0">#40E0D0</div>
-        <div style="background-color: #66ffff">#66ffff</div>
-        <div style="background-color: #33ffff">#33ffff</div>
-        <div style="background-color: #00ffcc">#00ffcc</div>
-        <div style="background-color: #EEEE00">#EEEE00</div>
-        <div style="background-color: #FFD700">#FFD700</div>
-        <div style="background-color: #54FF9F">#54FF9F</div>
-        <div style="background-color: #40E0D0">#40E0D0</div>
-        <div style="background-color: #00FFFF">#00FFFF</div>
-        <div style="background-color: #00FA9A">#00FA9A</div>
-        <div style="background-color: #00FF7F">#00FF7F</div>
-        <div style="background-color: #00BFFF">#00BFFF</div>
-        <div style="background-color: #FF8C00">#FF8C00</div>
+<div class="color-select-div">复制成功</div>
+<div class="color-container">
+    <div style="background-color: #6ffffb">#6ffffb</div>
+    <div style="background-color: #FFE4C4">#FFE4C4</div>
+    <div style="background-color: #FFD700">#FFD700</div>
+    <div style="background-color: #00FA9A">#00FA9A</div>
+    <div style="background-color: #40E0D0">#40E0D0</div>
+    <div style="background-color: #BA55D3">#BA55D3</div>
+    <div style="background-color: #FFC0CB">#FFC0CB</div>
+    <div style="background-color: #D87093">#D87093</div>
+    <div style="background-color: #FFFFF0">#FFFFF0</div>
+    <div style="background-color: #7FFFD4">#7FFFD4</div>
+    <div style="background-color: #87CEFA">#87CEFA</div>
+    <div style="background-color: #40E0D0">#40E0D0</div>
+    <div style="background-color: #66ffff">#66ffff</div>
+    <div style="background-color: #33ffff">#33ffff</div>
+    <div style="background-color: #00ffcc">#00ffcc</div>
+    <div style="background-color: #EEEE00">#EEEE00</div>
+    <div style="background-color: #FFD700">#FFD700</div>
+    <div style="background-color: #54FF9F">#54FF9F</div>
+    <div style="background-color: #40E0D0">#40E0D0</div>
+    <div style="background-color: #00FFFF">#00FFFF</div>
+    <div style="background-color: #00FA9A">#00FA9A</div>
+    <div style="background-color: #00FF7F">#00FF7F</div>
+    <div style="background-color: #00BFFF">#00BFFF</div>
+    <div style="background-color: #FF8C00">#FF8C00</div>
+
+    <div style="background-color: #007bff">#007bff</div>
+    <div style="background-color: #6610f2">#6610f2</div>
+    <div style="background-color: #6f42c1">#6f42c1</div>
+    <div style="background-color: #e83e8c">#e83e8c</div>
+    <div style="background-color: #dc3545">#dc3545</div>
+    <div style="background-color: #fd7e14">#fd7e14</div>
+    <div style="background-color: #ffc107">#ffc107</div>
+    <div style="background-color: #28a745">#28a745</div>
+    <div style="background-color: #20c997">#20c997</div>
+    <div style="background-color: #17a2b8">#17a2b8</div>
+    <div style="background-color: #6c757d">#6c757d</div>
+    <div style="background-color: #343a40">#343a40</div>
+</div>
+<hr />
+<!--    <hr style="margin-top:1.5em;"/>-->
+<h1 >渐变模式</h1>
+<hr />
+<div class="color-container" style="margin-top:0.3em;">
+    <div style="background: linear-gradient(90deg,#03f2f3,#1f51fb);">
+        linear-gradient(90deg,#03f2f3,#1f51fb)
     </div>
 
-    <input id="color-select" type="hidden"/>
+    <div style="background: linear-gradient(90deg,#dfeaff,#389af4);">
+        linear-gradient(90deg,#dfeaff,#389af4)
+    </div>
+
+    <div style="background: linear-gradient(90deg,#ffdcc3,#ffc257);">
+        linear-gradient(90deg,#ffdcc3,#ffc257)
+    </div>
+
+    <div style="background: linear-gradient(90deg,#ffedcc,#389af4);">
+        linear-gradient(90deg,#ffedcc,#1f51fb)
+    </div>
+
+    <div style="background: linear-gradient(90deg,#fed4e0,#fd6f97);">
+        linear-gradient(90deg,#fed4e0,#fd6f97)
+    </div>
+
+    <div style="background: linear-gradient(90deg,#e3d9fe,#a181fc);">
+        linear-gradient(90deg,#e3d9fe,#a181fc)
+    </div>
+
+    <div style="background: linear-gradient(90deg,#ff0,#f2553a);">
+        linear-gradient(90deg,#ff0,#f2553a);
+    </div>
+
+    <div style="background: linear-gradient(90deg,#F02D87,#5F0292);">
+        linear-gradient(90deg,#F02D87,#5F0292);
+    </div>
+
+    <div style="background: linear-gradient(90deg,#FEE043,#DC9F08);">
+        linear-gradient(90deg,#FEE043,#DC9F08);
+    </div>
+
+    <div style="background: linear-gradient(90deg,#FE5500,#B31E00);">
+        linear-gradient(90deg,#FE5500,#B31E00);
+    </div>
+
+    <div style="background: linear-gradient(90deg,#00FDB5,#00AFFA);">
+        linear-gradient(90deg,#00FDB5,#00AFFA);
+    </div>
+
+    <div style="background:linear-gradient(90deg,#db79ff,#8600fe);">
+        linear-gradient(90deg,#db79ff,#8600fe);
+    </div>
+
+    <div style="background:linear-gradient(90deg,#00ffdb,#0881fe);">
+        linear-gradient(90deg,#00ffdb,#0881fe);
+    </div>
+
+    <div style="background:linear-gradient(90deg,#faca12,#f2553a);">
+        linear-gradient(90deg,#faca12,#f2553a);
+    </div>
+
+    <div style="background:linear-gradient(90deg,#5ee58a,#027c34);">
+        linear-gradient(90deg,#5ee58a,#027c34);
+    </div>
+
+
+
+
+</div>
+<hr />
+<h1>样例设置</h1>
+<hr />
+<div style="height: 10vw;width: 10vw;padding: 0 0.05em 0.05em 0;background: linear-gradient(315deg,#01ffd7,transparent 30%);border-image: linear-gradient(310deg,#01ffd7,transparent) 1 1;">
+    <div style="height: 100%;width:100%; background-color: #FFFFE0">
+        边角边框设置
+    </div>
+</div>
+
+
+<input id="color-select" type="hidden"/>
 
 
 
@@ -89,35 +180,44 @@
 
 </body>
 <script>
-    // 绑定复制功能
-    function copyText() {
-
-        alert("复制成功");
-    }
-
-    var colorSet = [
+    let colorSet = [
         ['#389af4', '#dfeaff'],
         ['#ff8c37', '#ffdcc3'],
         ['#ffc257', '#ffedcc'],
         ['#fd6f97', '#fed4e0'],
-        ['#a181fc', '#e3d9fe']
+        ['#a181fc', '#e3d9fe'],
+        '#007bff',
+        '#6610f2',
+        '#6f42c1',
+        '#e83e8c',
+        '#dc3545',
+        '#fd7e14',
+        '#ffc107',
+        '#28a745',
+        '#20c997',
+        '#17a2b8',
+        '#6c757d',
+        '#343a40',
     ]
 
-    var input = document.getElementById("color-select");
-    var nodes = document.querySelectorAll('.color-container > div')
-    for(var i = 0; i<nodes.length ; i++){
-        var temp = nodes[i]
-
-        console.log(temp)
-        console.log(typeof temp)
+    let input = document.getElementById("color-select");
+    let nodes = document.querySelectorAll('.color-container > div')
+    for(let i = 0; i<nodes.length ; i++){
+        let temp = nodes[i]
         temp.addEventListener('click', function(ev){
-            var colorText = ev.target.innerText;
+            let colorText = ev.target.innerText;
             input.value = colorText; // 修改文本框的内容
-            input.select(); // 选中文本
-            document.execCommand("copy"); // 执行浏览器复制命令
+            let range = document.createRange()
+            let selection = window.getSelection();
+            selection.removeAllRanges();
+            range.selectNodeContents(ev.target)
 
-            var csd = document.querySelector('.color-select-div');
-            csd.style.cssText = "display:block;background-color:" + colorText;
+            selection.addRange(range)
+
+            document.execCommand("copy"); // 执行浏览器复制命令
+            selection.removeAllRanges();
+            let csd = document.querySelector('.color-select-div');
+            csd.style.cssText = "display:block;background:" + colorText;
         })
     }
 </script>
